@@ -1,5 +1,8 @@
 package dunkmania101.plastikos.modules.base.modules.materials.common.registry;
 
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
 import dunkmania101.plastikos.PlastikosMod;
@@ -14,30 +17,30 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
     }
 
     // Ingredients
-    public ResourceLocation PLASTIC_POWDER;
+    public Entry<ResourceLocation, Supplier<Item>> PLASTIC_POWDER;
 
-    public ResourceLocation MODULATING_DUST;
-    public ResourceLocation MODULATING_SHARD;
-    public ResourceLocation MODULATING_CRYSTAL;
+    public Entry<ResourceLocation, Supplier<Item>> MODULATING_DUST;
+    public Entry<ResourceLocation, Supplier<Item>> MODULATING_SHARD;
+    public Entry<ResourceLocation, Supplier<Item>> MODULATING_CRYSTAL;
 
     // BlockItems
-    public ResourceLocation WOODEN_FRAME;
-    public ResourceLocation STONE_FRAME;
-    public ResourceLocation IRON_FRAME;
+    public Entry<ResourceLocation, Supplier<Item>> WOODEN_FRAME;
+    public Entry<ResourceLocation, Supplier<Item>> STONE_FRAME;
+    public Entry<ResourceLocation, Supplier<Item>> IRON_FRAME;
 
     @Override
     public void registerObjects() {
         // Ingredients
-        this.PLASTIC_POWDER = this.registerObject("plastic_powder", () -> new Item(getBaseProperties())).getKey();
+        this.PLASTIC_POWDER = this.registerObject("plastic_powder", () -> new Item(getBaseProperties()));
 
-        this.MODULATING_DUST = this.registerObject("modulating_dust", () -> new Item(getBaseProperties())).getKey();
-        this.MODULATING_SHARD = this.registerObject("modulating_shard", () -> new Item(getBaseProperties())).getKey();
-        this.MODULATING_CRYSTAL = this.registerObject("modulating_crystal", () -> new Item(getBaseProperties())).getKey();
+        this.MODULATING_DUST = this.registerObject("modulating_dust", () -> new Item(getBaseProperties()));
+        this.MODULATING_SHARD = this.registerObject("modulating_shard", () -> new Item(getBaseProperties()));
+        this.MODULATING_CRYSTAL = this.registerObject("modulating_crystal", () -> new Item(getBaseProperties()));
 
         // BlockItems
-        //this.WOODEN_FRAME = this.registerObject("wooden_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.getEntries().get(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.WOODEN_FRAME).get(), getBaseProperties())).getKey();
-        //this.STONE_FRAME = this.registerObject("stone_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.getEntries().get(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.STONE_FRAME).get(), getBaseProperties())).getKey();
-        //this.IRON_FRAME = this.registerObject("iron_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.getEntries().get(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.IRON_FRAME).get(), getBaseProperties())).getKey();
+        this.WOODEN_FRAME = this.registerObject("wooden_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.WOODEN_FRAME.getValue().get(), getBaseProperties()));
+        this.STONE_FRAME = this.registerObject("stone_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.STONE_FRAME.getValue().get(), getBaseProperties()));
+        this.IRON_FRAME = this.registerObject("iron_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.IRON_FRAME.getValue().get(), getBaseProperties()));
     }
 
     @Override

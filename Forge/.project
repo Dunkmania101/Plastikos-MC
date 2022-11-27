@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Forge_</name>
-	<comment>Project Forge_ created by Buildship.</comment>
+	<name>Forge</name>
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -20,9 +20,16 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Common</name>
+			<type>2</type>
+			<location>/run/media/dunk/1f1813d7-4da3-46be-98f0-253e6a06a345/Programming/Java/MC/MinecraftModDev/Mods/Plastikos/Common</location>
+		</link>
+	</linkedResources>
 	<filteredResources>
 		<filter>
-			<id>1669484185204</id>
+			<id>1</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

@@ -21,19 +21,20 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
     }
 
     default Entry<ResourceLocation, Supplier<T>> registerObject(ResourceLocation rn, Supplier<T> value) {
-        IRegistryAcceptor<T> acceptor = this.getAcceptor();
         if (rn != null && value != null) {
-            if (acceptor != null) {
-                getAcceptor().acceptObject(rn, value);
+            IRegistryAcceptor<T> acceptor = this.getAcceptor();
+            if (acceptor != null && acceptor != this) {
+                return getAcceptor().acceptObject(rn, value);
+            } else {
+                getEntries().put(rn, value);
+                return Map.entry(rn, value);
             }
-            getEntries().put(rn, value);
-            return Map.entry(rn, value);
         }
         return null;
     }
 
-    default void acceptObject(ResourceLocation rn, Supplier<T> value) {
-        registerObject(rn, value);
+    default Entry<ResourceLocation, Supplier<T>> acceptObject(ResourceLocation rn, Supplier<T> value) {
+        return registerObject(rn, value);
     }
 
     default Entry<ResourceLocation, Supplier<T>> registerObject(String name, Supplier<T> value, boolean doProcessName) {

@@ -1,4 +1,4 @@
-/home/dunk/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.57_mapped_parchment_1.19.2-2022.11.20-1.19.2/forge-1.19.2-43.1.57_mapped_parchment_1.19.2-2022.11.20-1.19.2.jar
+/home/dunk/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.57_mapped_parchment_1.19.2-2022.11.20-1.19.2/forge-1.19.2-43.1.57_mapped_parchment_1.19.2-2022.11.20-1.19.2-recomp.jar
 /home/dunk/.gradle/caches/forge_gradle/minecraft_repo/versions/1.19.2/client-extra.jar
 /home/dunk/.gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.19.2-43.1.57/3210ee60b1430abf87d6f4c5e8e89c3f951c9a0/javafmllanguage-1.19.2-43.1.57.jar
 /home/dunk/.gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.19.2-43.1.57/126a3a5091a9973b31320a1a731374d268127b79/lowcodelanguage-1.19.2-43.1.57.jar

@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.interfaces.IBlockRegistryHandler;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
@@ -18,6 +19,10 @@ public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler 
     public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<Block> acceptor) {
         this.PARENT = parent;
         this.acceptor = acceptor;
+    }
+
+    public BaseBlockRegistryHandler(IModularModModule parent) {
+        this(parent, parent.getRegistryAcceptorOfId(Registry.BLOCK_REGISTRY.location()));
     }
 
     @Override

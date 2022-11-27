@@ -53,17 +53,17 @@ public class PlastikosMod implements IModularModModule {
     }
 
     @Override
-    public <T> IRegistryAcceptor<T> getRegistryAcceptorOfId(ResourceLocation registry) {
+    public IRegistryAcceptor<?> getRegistryAcceptorOfId(ResourceLocation registry) {
         if (registry == Registry.ITEM_REGISTRY.location()) {
-            return (IRegistryAcceptor<T>) this.itemAcceptor;
+            return this.itemAcceptor;
         } else if (registry == Registry.BLOCK_REGISTRY.location()) {
-            return (IRegistryAcceptor<T>) this.blockAcceptor;
+            return this.blockAcceptor;
         } else if (registry == Registry.BLOCK_ENTITY_TYPE_REGISTRY.location()) {
-            return (IRegistryAcceptor<T>) this.blockEntityAcceptor;
+            return this.blockEntityAcceptor;
         } else if (registry == Registry.ENTITY_TYPE_REGISTRY.location()) {
-            return (IRegistryAcceptor<T>) this.entityAcceptor;
+            return this.entityAcceptor;
         } else if (registry == Registry.MENU_REGISTRY.location()) {
-            return (IRegistryAcceptor<T>) this.menuAcceptor;
+            return this.menuAcceptor;
         }
 
         return null;

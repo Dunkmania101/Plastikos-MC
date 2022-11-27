@@ -30,13 +30,18 @@ public class PlastikosModuleBase implements IModularModModule {
     }
 
     @Override
+    public String getBaseId() {
+        return PlastikosConstants.MODULEID_BASE;
+    }
+
+    @Override
     public IModularModModule getParent() {
         return this.PARENT;
     }
 
     @Override
-    public String getBaseId() {
-        return PlastikosConstants.MODULEID_BASE;
+    public Map<String, IModularModModule> getChildren() {
+        return this.MODULES;
     }
 
     @Override

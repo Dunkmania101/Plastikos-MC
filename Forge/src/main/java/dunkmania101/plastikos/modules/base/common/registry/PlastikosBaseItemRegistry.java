@@ -1,5 +1,8 @@
 package dunkmania101.plastikos.modules.base.common.registry;
 
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
 import dunkmania101.plastikos.PlastikosMod;
@@ -13,17 +16,17 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
         super(parent);
     }
 
-    public ResourceLocation CAST_IRON_CROWBAR;
+    public Entry<ResourceLocation, Supplier<Item>> CAST_IRON_CROWBAR;
 
-    public ResourceLocation BIG_CAST_IRON_NAIL;
+    public Entry<ResourceLocation, Supplier<Item>> BIG_CAST_IRON_NAIL;
 
     @Override
     public void registerObjects() {
         // Tools
-        this.CAST_IRON_CROWBAR = this.registerObject("crowbar", () -> new Item(getBaseProperties())).getKey();
+        this.CAST_IRON_CROWBAR = this.registerObject("crowbar", () -> new Item(getBaseProperties()));
 
         // BlockItems
-        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.getEntries().get(PlastikosMod.INSTANCE.BASE.BLOCKS.BIG_CAST_IRON_NAIL).get(), getBaseProperties())).getKey();
+        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.BIG_CAST_IRON_NAIL.getValue().get(), getBaseProperties()));
     }
 
     @Override
