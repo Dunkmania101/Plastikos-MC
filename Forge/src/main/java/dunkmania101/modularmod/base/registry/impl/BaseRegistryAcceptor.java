@@ -1,0 +1,10 @@
+package dunkmania101.modularmod.base.registry.impl;
+
+import java.util.function.Supplier;
+
+import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
+import net.minecraft.resources.ResourceLocation;
+
+public abstract class BaseRegistryAcceptor<T> implements IRegistryAcceptor<T> {
+    public void acceptObject(ResourceLocation rn, Supplier<T> value) {}
+}

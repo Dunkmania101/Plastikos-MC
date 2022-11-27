@@ -1,0 +1,37 @@
+package dunkmania101.modularmod.base.registry.impl;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
+import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.modularmod.base.registry.interfaces.IBlockRegistryHandler;
+import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+
+public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler {
+    private final IModularModModule PARENT;
+    private final Map<ResourceLocation, Supplier<Block>> ENTRIES = new HashMap<>();
+    private final IRegistryAcceptor<Block> acceptor;
+
+    public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<Block> acceptor) {
+        this.PARENT = parent;
+        this.acceptor = acceptor;
+    }
+
+    @Override
+    public IRegistryAcceptor<Block> getAcceptor() {
+        return this.acceptor;
+    }
+
+    @Override
+    public IModularModModule getParentModule() {
+        return this.PARENT;
+    }
+
+    @Override
+    public Map<ResourceLocation, Supplier<Block>> getEntries() {
+        return this.ENTRIES;
+    }
+}
