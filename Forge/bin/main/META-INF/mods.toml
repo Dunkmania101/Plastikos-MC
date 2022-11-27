@@ -43,6 +43,7 @@ Dunkmania101 (founder, developer, artist)
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
+A Minecraft mod that is very flexible. Plastikos indeed!
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.plastikos]] #optional

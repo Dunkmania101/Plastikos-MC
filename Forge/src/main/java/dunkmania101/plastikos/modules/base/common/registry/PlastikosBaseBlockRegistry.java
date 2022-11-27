@@ -12,24 +12,15 @@ public class PlastikosBaseBlockRegistry extends BaseBlockRegistryHandler {
         super(parent, parent.getRegistryAcceptorOfId(Registry.BLOCK_REGISTRY.location()));
     }
 
-    public ResourceLocation WOODEN_FRAME;
-    public ResourceLocation STONE_FRAME;
-    public ResourceLocation IRON_FRAME;
+    public ResourceLocation BIG_CAST_IRON_NAIL;
 
     @Override
     public void registerObjects() {
-        this.WOODEN_FRAME = this.registerObject("wooden_frame", () -> new Block(getBasePropertiesMetal())).getKey();
-        this.STONE_FRAME = this.registerObject("stone_frame", () -> new Block(getBasePropertiesStone())).getKey();
-        this.IRON_FRAME = this.registerObject("iron_frame", () -> new Block(getBasePropertiesMetal())).getKey();
+        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new Block(getBasePropertiesMetal())).getKey();
     }
 
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
-    }
-
-    @Override
-    public String getModuleId() {
-        return PlastikosConstants.MODULEID_BASE;
     }
 }

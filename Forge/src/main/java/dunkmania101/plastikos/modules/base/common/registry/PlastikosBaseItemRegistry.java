@@ -2,8 +2,10 @@ package dunkmania101.plastikos.modules.base.common.registry;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
+import dunkmania101.plastikos.PlastikosMod;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
@@ -11,28 +13,21 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
         super(parent);
     }
 
-    public ResourceLocation PLASTIC_POWDER;
+    public ResourceLocation CAST_IRON_CROWBAR;
 
-    public ResourceLocation MODULATING_DUST;
-    public ResourceLocation MODULATING_SHARD;
-    public ResourceLocation MODULATING_CRYSTAL;
+    public ResourceLocation BIG_CAST_IRON_NAIL;
 
     @Override
     public void registerObjects() {
-        this.PLASTIC_POWDER = this.registerObject("plastic_powder", () -> new Item(getBaseProperties())).getKey();
+        // Tools
+        this.CAST_IRON_CROWBAR = this.registerObject("crowbar", () -> new Item(getBaseProperties())).getKey();
 
-        this.MODULATING_DUST = this.registerObject("modulating_dust", () -> new Item(getBaseProperties())).getKey();
-        this.MODULATING_SHARD = this.registerObject("modulating_shard", () -> new Item(getBaseProperties())).getKey();
-        this.MODULATING_CRYSTAL = this.registerObject("modulating_crystal", () -> new Item(getBaseProperties())).getKey();
+        // BlockItems
+        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.getEntries().get(PlastikosMod.INSTANCE.BASE.BLOCKS.BIG_CAST_IRON_NAIL).get(), getBaseProperties())).getKey();
     }
 
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
-    }
-
-    @Override
-    public String getModuleId() {
-        return PlastikosConstants.MODULEID_BASE;
     }
 }

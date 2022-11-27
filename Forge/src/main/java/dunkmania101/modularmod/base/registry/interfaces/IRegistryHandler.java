@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
-import dunkmania101.modularmod.base.data.ModularModConstants;
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
 public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
@@ -16,7 +16,9 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
     IModularModModule getParentModule();
 
     String getModId();
-    String getModuleId();
+    default String getModuleId() {
+        return getParentModule().getId();
+    }
 
     default Entry<ResourceLocation, Supplier<T>> registerObject(ResourceLocation rn, Supplier<T> value) {
         IRegistryAcceptor<T> acceptor = this.getAcceptor();
@@ -44,7 +46,7 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
     }
 
     default String processName(String baseName) {
-        return getModuleId().concat(ModularModConstants.PATH_DELIMITER).concat(baseName);
+        return NameUtils.appendName(getModuleId(), baseName);
     }
 
     default void registerObjects() {};

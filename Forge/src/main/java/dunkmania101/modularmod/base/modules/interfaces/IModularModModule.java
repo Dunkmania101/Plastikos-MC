@@ -3,10 +3,21 @@ package dunkmania101.modularmod.base.modules.interfaces;
 import java.util.Map;
 
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
+import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
 public interface IModularModModule {
-    String getId();
+    String getBaseId();
+    default String getId() {
+        String id = getBaseId();
+
+        IModularModModule parent = getParent();
+        if (parent != null && parent != this) {
+            id = NameUtils.appendName(parent.getId(), id);
+        }
+
+        return id;
+    }
 
     default String getFriendlyName() {
         return this.getId();

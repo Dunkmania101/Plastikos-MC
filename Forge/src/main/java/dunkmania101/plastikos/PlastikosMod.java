@@ -16,6 +16,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class PlastikosMod implements IModularModModule {
+    public static PlastikosMod INSTANCE;
+
     public final Map<String, IModularModModule> MODULES;
 
     protected final IRegistryAcceptor<Item> itemAcceptor;
@@ -27,6 +29,8 @@ public class PlastikosMod implements IModularModModule {
     public final PlastikosModuleBase BASE;
 
     public PlastikosMod(IRegistryAcceptor<Item> itemAcceptor, IRegistryAcceptor<Block> blockAcceptor, IRegistryAcceptor<BlockEntityType<?>> blockEntityAcceptor, IRegistryAcceptor<EntityType<?>> entityAcceptor, IRegistryAcceptor<MenuType<?>> menuAcceptor) {
+        INSTANCE = this;
+
         this.itemAcceptor = itemAcceptor;
         this.blockAcceptor = blockAcceptor;
         this.blockEntityAcceptor = blockEntityAcceptor;
@@ -39,7 +43,7 @@ public class PlastikosMod implements IModularModModule {
     }
 
     @Override
-    public String getId() {
+    public String getBaseId() {
         return PlastikosConstants.MODID;
     }
 
