@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
     IRegistryAcceptor<T> getAcceptor();
 
-    Map<ResourceLocation, Supplier<T>> getEntries();
+    Map<ResourceLocation, Supplier<? extends T>> getEntries();
 
     IModularModModule getParentModule();
 
@@ -20,7 +20,7 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
         return getParentModule().getId();
     }
 
-    default Entry<ResourceLocation, Supplier<T>> registerObject(ResourceLocation rn, Supplier<T> value) {
+    default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(ResourceLocation rn, Supplier<U> value) {
         if (rn != null && value != null) {
             IRegistryAcceptor<T> acceptor = this.getAcceptor();
             if (acceptor != null && acceptor != this) {
@@ -33,16 +33,16 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
         return null;
     }
 
-    default Entry<ResourceLocation, Supplier<T>> acceptObject(ResourceLocation rn, Supplier<T> value) {
+    default <U extends T> Entry<ResourceLocation, Supplier<U>> acceptObject(ResourceLocation rn, Supplier<U> value) {
         return registerObject(rn, value);
     }
 
-    default Entry<ResourceLocation, Supplier<T>> registerObject(String name, Supplier<T> value, boolean doProcessName) {
+    default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(String name, Supplier<U> value, boolean doProcessName) {
         ResourceLocation rn = new ResourceLocation(this.getModId(), doProcessName ? processName(name) : name);
         return registerObject(rn, value);
     }
 
-    default Entry<ResourceLocation, Supplier<T>> registerObject(String name, Supplier<T> value) {
+    default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(String name, Supplier<U> value) {
         return registerObject(name, value, true);
     }
 

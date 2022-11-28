@@ -14,7 +14,7 @@ import net.minecraft.world.item.Item;
 
 public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     private final IModularModModule PARENT;
-    private final Map<ResourceLocation, Supplier<Item>> ENTRIES = new HashMap<>();
+    private final Map<ResourceLocation, Supplier<? extends Item>> ENTRIES = new HashMap<>();
     private CreativeModeTab CREATIVE_MODE_TAB;
     private final IRegistryAcceptor<Item> acceptor;
 
@@ -39,7 +39,7 @@ public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     }
 
     @Override
-    public Map<ResourceLocation, Supplier<Item>> getEntries() {
+    public Map<ResourceLocation, Supplier<? extends Item>> getEntries() {
         return this.ENTRIES;
     }
 

@@ -14,11 +14,11 @@ public class PlastikosBaseBlockRegistry extends BaseBlockRegistryHandler {
         super(parent);
     }
 
-    public Entry<ResourceLocation, Supplier<Block>> BIG_CAST_IRON_NAIL;
+    public Entry<ResourceLocation, Supplier<Block>> CAST_IRON_NAIL;
 
     @Override
     public void registerObjects() {
-        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new Block(getBasePropertiesMetal()));
+        this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new Block(getBasePropertiesMetal()));
     }
 
     @Override

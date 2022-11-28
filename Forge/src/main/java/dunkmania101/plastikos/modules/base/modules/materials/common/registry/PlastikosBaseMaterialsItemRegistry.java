@@ -24,9 +24,9 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
     public Entry<ResourceLocation, Supplier<Item>> MODULATING_CRYSTAL;
 
     // BlockItems
-    public Entry<ResourceLocation, Supplier<Item>> WOODEN_FRAME;
-    public Entry<ResourceLocation, Supplier<Item>> STONE_FRAME;
-    public Entry<ResourceLocation, Supplier<Item>> IRON_FRAME;
+    public Entry<ResourceLocation, Supplier<BlockItem>> WOODEN_FRAME;
+    public Entry<ResourceLocation, Supplier<BlockItem>> STONE_FRAME;
+    public Entry<ResourceLocation, Supplier<BlockItem>> IRON_FRAME;
 
     @Override
     public void registerObjects() {

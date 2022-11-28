@@ -6,5 +6,5 @@ import java.util.function.Supplier;
 import net.minecraft.resources.ResourceLocation;
 
 public interface IRegistryAcceptor<T> {
-    Entry<ResourceLocation, Supplier<T>> acceptObject(ResourceLocation rn, Supplier<T> value);
+    <U extends T> Entry<ResourceLocation, Supplier<U>> acceptObject(ResourceLocation rn, Supplier<U> value);
 }

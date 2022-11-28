@@ -74,9 +74,9 @@ public class PlastikosModForge {
     private static <T> IRegistryAcceptor<T> getRegistryAcceptor(DeferredRegister<T> register) {
         return new BaseRegistryAcceptor<T>() {
             @Override
-            public Entry<ResourceLocation, Supplier<T>> acceptObject(ResourceLocation rn, Supplier<T> value) {
+            public <U extends T> Entry<ResourceLocation, Supplier<U>> acceptObject(ResourceLocation rn, Supplier<U> value) {
                 RegistryObject<T> obj = register.register(rn.getPath(), value);
-                return Map.entry(obj.getId(), (Supplier<T>) obj);
+                return Map.entry(obj.getId(), (Supplier<U>) obj);
             }
         };
     }

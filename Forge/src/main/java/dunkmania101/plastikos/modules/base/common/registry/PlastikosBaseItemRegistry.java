@@ -18,7 +18,7 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
 
     public Entry<ResourceLocation, Supplier<Item>> CAST_IRON_CROWBAR;
 
-    public Entry<ResourceLocation, Supplier<Item>> BIG_CAST_IRON_NAIL;
+    public Entry<ResourceLocation, Supplier<BlockItem>> CAST_IRON_NAIL;
 
     @Override
     public void registerObjects() {
@@ -26,7 +26,7 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
         this.CAST_IRON_CROWBAR = this.registerObject("crowbar", () -> new Item(getBaseProperties()));
 
         // BlockItems
-        this.BIG_CAST_IRON_NAIL = this.registerObject("big_cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.BIG_CAST_IRON_NAIL.getValue().get(), getBaseProperties()));
+        this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.CAST_IRON_NAIL.getValue().get(), getBaseProperties()));
     }
 
     @Override

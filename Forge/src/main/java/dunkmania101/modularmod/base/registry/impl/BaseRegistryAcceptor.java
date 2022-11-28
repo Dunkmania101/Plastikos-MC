@@ -7,5 +7,5 @@ import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import net.minecraft.resources.ResourceLocation;
 
 public abstract class BaseRegistryAcceptor<T> implements IRegistryAcceptor<T> {
-    public abstract Entry<ResourceLocation, Supplier<T>> acceptObject(ResourceLocation rn, Supplier<T> value);
+    public abstract <U extends T> Entry<ResourceLocation, Supplier<U>> acceptObject(ResourceLocation rn, Supplier<U> value);
 }
