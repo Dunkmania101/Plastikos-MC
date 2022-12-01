@@ -117,9 +117,6 @@ public interface IModularModModule {
 
     default void serverSetup() {
         serverGeneralSetup();
-        if (isAllowedToRegister()) {
-            serverRegistrySetup();
-        }
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
