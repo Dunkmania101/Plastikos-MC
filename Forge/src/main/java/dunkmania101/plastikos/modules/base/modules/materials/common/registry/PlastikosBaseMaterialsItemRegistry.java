@@ -47,4 +47,9 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
     public String getModId() {
         return PlastikosConstants.MODID;
     }
+
+    @Override
+    public ResourceLocation getTabIconId() {
+        return this.PLASTIC_POWDER.getKey();
+    }
 }

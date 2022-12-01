@@ -16,9 +16,9 @@ public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     private final IModularModModule PARENT;
     private final Map<ResourceLocation, Supplier<? extends Item>> ENTRIES = new HashMap<>();
     private CreativeModeTab CREATIVE_MODE_TAB;
-    private final IRegistryAcceptor<Item> acceptor;
+    private final IRegistryAcceptor<? extends Item> acceptor;
 
-    public BaseItemRegistryHandler(IModularModModule parent, IRegistryAcceptor<Item> acceptor) {
+    public BaseItemRegistryHandler(IModularModModule parent, IRegistryAcceptor<? extends Item> acceptor) {
         this.PARENT = parent;
         this.acceptor = acceptor;
         this.createCreativeModeTab();
@@ -29,7 +29,7 @@ public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     }
 
     @Override
-    public IRegistryAcceptor<Item> getAcceptor() {
+    public IRegistryAcceptor<? extends Item> getAcceptor() {
         return this.acceptor;
     }
 

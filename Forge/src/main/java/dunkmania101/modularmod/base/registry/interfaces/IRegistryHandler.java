@@ -9,7 +9,7 @@ import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
 public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
-    IRegistryAcceptor<T> getAcceptor();
+    IRegistryAcceptor<? extends T> getAcceptor();
 
     Map<ResourceLocation, Supplier<? extends T>> getEntries();
 
@@ -22,9 +22,9 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
 
     default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(ResourceLocation rn, Supplier<U> value) {
         if (rn != null && value != null) {
-            IRegistryAcceptor<T> acceptor = this.getAcceptor();
+            IRegistryAcceptor<U> acceptor = (IRegistryAcceptor<U>) this.getAcceptor();
             if (acceptor != null && acceptor != this) {
-                return getAcceptor().acceptObject(rn, value);
+                return acceptor.acceptObject(rn, value);
             } else {
                 getEntries().put(rn, value);
                 return Map.entry(rn, value);

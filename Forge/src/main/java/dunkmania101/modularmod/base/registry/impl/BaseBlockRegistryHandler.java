@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Block;
 
 public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler {
     private final IModularModModule PARENT;
-    private final Map<ResourceLocation, Supplier<Block>> ENTRIES = new HashMap<>();
+    private final Map<ResourceLocation, Supplier<? extends Block>> ENTRIES = new HashMap<>();
     private final IRegistryAcceptor<Block> acceptor;
 
     public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<Block> acceptor) {
@@ -26,7 +26,7 @@ public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler 
     }
 
     @Override
-    public IRegistryAcceptor<Block> getAcceptor() {
+    public IRegistryAcceptor<? extends Block> getAcceptor() {
         return this.acceptor;
     }
 
@@ -36,7 +36,7 @@ public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler 
     }
 
     @Override
-    public Map<ResourceLocation, Supplier<Block>> getEntries() {
+    public Map<ResourceLocation, Supplier<? extends Block>> getEntries() {
         return this.ENTRIES;
     }
 }

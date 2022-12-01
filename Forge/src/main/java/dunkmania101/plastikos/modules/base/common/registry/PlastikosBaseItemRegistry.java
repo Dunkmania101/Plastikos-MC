@@ -23,7 +23,7 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
     @Override
     public void registerObjects() {
         // Tools
-        this.CAST_IRON_CROWBAR = this.registerObject("crowbar", () -> new Item(getBaseProperties()));
+        this.CAST_IRON_CROWBAR = this.registerObject("cast_iron_crowbar", () -> new Item(getBaseProperties()));
 
         // BlockItems
         this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.CAST_IRON_NAIL.getValue().get(), getBaseProperties()));
@@ -32,5 +32,10 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
+    }
+
+    @Override
+    public ResourceLocation getTabIconId() {
+        return this.CAST_IRON_CROWBAR.getKey();
     }
 }
