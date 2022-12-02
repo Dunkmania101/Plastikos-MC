@@ -1,4 +1,4 @@
-package dunkmania101.plastikos.modules.transportation.common.registry;
+package dunkmania101.plastikos.modules.warfare.common.registry;
 
 import java.util.Map.Entry;
 import java.util.function.Supplier;
@@ -10,21 +10,19 @@ import dunkmania101.plastikos.data.PlastikosConstants;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 
-public class PlastikosTransportationItemRegistry extends BaseItemRegistryHandler {
-    public PlastikosTransportationItemRegistry(IModularModModule parent) {
+public class PlastikosWarfareItemRegistry extends BaseItemRegistryHandler {
+    public PlastikosWarfareItemRegistry(IModularModModule parent) {
         super(parent);
     }
 
-    // BlockItems {
-    public Entry<ResourceLocation, Supplier<BlockItem>> TRAFFIC_CONE;
-    // }
+    public Entry<ResourceLocation, Supplier<BlockItem>> KEVLAR_TARP;
 
     @Override
     public void registerObjects() {
-        this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new BlockItem(PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.TRAFFIC_CONE.getValue().get(), getBaseProperties()));
+        this.KEVLAR_TARP = this.registerObject("kevlar_tarp", () -> new BlockItem(PlastikosMod.INSTANCE.WARFARE.BLOCKS.KEVLAR_TARP.getValue().get(), getBaseProperties()));
 
         // Tab
-        setTabIconId(this.TRAFFIC_CONE.getKey());
+        setTabIconId(this.KEVLAR_TARP.getKey());
     }
 
     @Override

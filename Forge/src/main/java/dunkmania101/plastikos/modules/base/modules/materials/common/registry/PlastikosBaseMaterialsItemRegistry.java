@@ -24,6 +24,7 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
     public Entry<ResourceLocation, Supplier<Item>> MODULATING_CRYSTAL;
 
     // BlockItems
+    public Entry<ResourceLocation, Supplier<BlockItem>> CLOTH_FRAME_WRAP;
     public Entry<ResourceLocation, Supplier<BlockItem>> WOODEN_FRAME;
     public Entry<ResourceLocation, Supplier<BlockItem>> STONE_FRAME;
     public Entry<ResourceLocation, Supplier<BlockItem>> IRON_FRAME;
@@ -38,18 +39,17 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
         this.MODULATING_CRYSTAL = this.registerObject("modulating_crystal", () -> new Item(getBaseProperties()));
 
         // BlockItems
+        this.CLOTH_FRAME_WRAP = this.registerObject("cloth_frame_wrap", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.CLOTH_FRAME_WRAP.getValue().get(), getBaseProperties()));
         this.WOODEN_FRAME = this.registerObject("wooden_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.WOODEN_FRAME.getValue().get(), getBaseProperties()));
         this.STONE_FRAME = this.registerObject("stone_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.STONE_FRAME.getValue().get(), getBaseProperties()));
         this.IRON_FRAME = this.registerObject("iron_frame", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.MATERIALS.BLOCKS.IRON_FRAME.getValue().get(), getBaseProperties()));
+
+        // Tab
+        setTabIconId(this.PLASTIC_POWDER.getKey());
     }
 
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
-    }
-
-    @Override
-    public ResourceLocation getTabIconId() {
-        return this.PLASTIC_POWDER.getKey();
     }
 }

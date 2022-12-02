@@ -6,6 +6,7 @@ public class PlastikosConstants {
     public static final String LOADERID_FORGE = "loader_forge";
     public static final String LOADERID_FABRIC = "loader_forge";
 
+    // These don't have to be unique because they're nested
     public static final String MODULEID_BASE = "base";
     public static final String MODULEID_BASE_MATERIALS = "materials";
     public static final String MODULEID_CONSTRUCTION = "construction";
@@ -40,4 +41,5 @@ public class PlastikosConstants {
     public static final String MODULEID_TRANSPORTATION_VEHICLES_AIR = "air";
     public static final String MODULEID_TRANSPORTATION_VEHICLES_ROCKETS = "rockets";
     public static final String MODULEID_WARFARE = "warfare";
+    public static final String MODULEID_WARFARE_MATERIALS = "materials";
 }

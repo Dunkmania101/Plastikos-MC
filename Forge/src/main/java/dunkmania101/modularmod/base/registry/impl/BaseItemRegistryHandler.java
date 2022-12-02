@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     private final IModularModModule PARENT;
     private final Map<ResourceLocation, Supplier<? extends Item>> ENTRIES = new HashMap<>();
+    private ResourceLocation TAB_ICON_ID;
     private CreativeModeTab CREATIVE_MODE_TAB;
     private final IRegistryAcceptor<? extends Item> acceptor;
 
@@ -51,5 +52,15 @@ public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     @Override
     public void setCreativeModeTab(CreativeModeTab tab) {
         this.CREATIVE_MODE_TAB = tab;
+    }
+
+    @Override
+    public ResourceLocation getTabIconId() {
+        return this.TAB_ICON_ID;
+    }
+
+    @Override
+    public void setTabIconId(ResourceLocation id) {
+        this.TAB_ICON_ID = id;
     }
 }

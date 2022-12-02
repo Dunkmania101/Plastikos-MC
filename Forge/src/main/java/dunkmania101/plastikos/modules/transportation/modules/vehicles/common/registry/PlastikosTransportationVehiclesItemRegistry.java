@@ -34,15 +34,13 @@ public class PlastikosTransportationVehiclesItemRegistry extends BaseItemRegistr
         this.SMALL_WHEEL_TIRE = this.registerObject("small_wheel_tire", () -> new BlockItem(PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.SMALL_WHEEL_TIRE.getValue().get(), getBaseProperties()));
         this.WHEEL_TIRE = this.registerObject("wheel_tire", () -> new BlockItem(PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.WHEEL_TIRE.getValue().get(), getBaseProperties()));
         this.LARGE_WHEEL_TIRE = this.registerObject("large_wheel_tire", () -> new BlockItem(PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.LARGE_WHEEL_TIRE.getValue().get(), getBaseProperties()));
+
+        // Tab
+        setTabIconId(this.LARGE_WHEEL_TIRE.getKey());
     }
 
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
-    }
-
-    @Override
-    public ResourceLocation getTabIconId() {
-        return this.LARGE_WHEEL_TIRE.getKey();
     }
 }

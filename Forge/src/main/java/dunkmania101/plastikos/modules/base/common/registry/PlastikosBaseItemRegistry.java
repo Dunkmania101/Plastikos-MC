@@ -27,15 +27,13 @@ public class PlastikosBaseItemRegistry extends BaseItemRegistryHandler {
 
         // BlockItems
         this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new BlockItem(PlastikosMod.INSTANCE.BASE.BLOCKS.CAST_IRON_NAIL.getValue().get(), getBaseProperties()));
+
+        // Tab
+        setTabIconId(this.CAST_IRON_NAIL.getKey());
     }
 
     @Override
     public String getModId() {
         return PlastikosConstants.MODID;
-    }
-
-    @Override
-    public ResourceLocation getTabIconId() {
-        return this.CAST_IRON_CROWBAR.getKey();
     }
 }

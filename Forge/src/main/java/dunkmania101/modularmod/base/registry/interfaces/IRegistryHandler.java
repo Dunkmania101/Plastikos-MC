@@ -22,11 +22,11 @@ public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
 
     default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(ResourceLocation rn, Supplier<U> value) {
         if (rn != null && value != null) {
+            getEntries().put(rn, value);
             IRegistryAcceptor<U> acceptor = (IRegistryAcceptor<U>) this.getAcceptor();
             if (acceptor != null && acceptor != this) {
                 return acceptor.acceptObject(rn, value);
             } else {
-                getEntries().put(rn, value);
                 return Map.entry(rn, value);
             }
         }
