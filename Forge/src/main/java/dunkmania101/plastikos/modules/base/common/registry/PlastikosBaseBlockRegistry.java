@@ -4,12 +4,11 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseBlockRegistryHandler;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-public class PlastikosBaseBlockRegistry extends BaseBlockRegistryHandler {
+public class PlastikosBaseBlockRegistry extends BasePlastikosBlockRegistryHandler {
     public PlastikosBaseBlockRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -19,10 +18,5 @@ public class PlastikosBaseBlockRegistry extends BaseBlockRegistryHandler {
     @Override
     public void registerObjects() {
         this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new Block(getBasePropertiesMetal()));
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

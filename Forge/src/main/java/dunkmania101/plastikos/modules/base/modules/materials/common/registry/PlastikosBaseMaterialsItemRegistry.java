@@ -4,14 +4,13 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
 import dunkmania101.plastikos.PlastikosMod;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
-public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler {
+public class PlastikosBaseMaterialsItemRegistry extends BasePlastikosItemRegistryHandler {
     public PlastikosBaseMaterialsItemRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -46,10 +45,5 @@ public class PlastikosBaseMaterialsItemRegistry extends BaseItemRegistryHandler 
 
         // Tab
         setTabIconId(this.PLASTIC_POWDER.getKey());
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

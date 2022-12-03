@@ -4,13 +4,12 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
 import dunkmania101.plastikos.PlastikosMod;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 
-public class PlastikosWarfareItemRegistry extends BaseItemRegistryHandler {
+public class PlastikosWarfareItemRegistry extends BasePlastikosItemRegistryHandler {
     public PlastikosWarfareItemRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -23,10 +22,5 @@ public class PlastikosWarfareItemRegistry extends BaseItemRegistryHandler {
 
         // Tab
         setTabIconId(this.KEVLAR_TARP.getKey());
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

@@ -2,14 +2,16 @@ package dunkmania101.modularmod.base.client.ui.containers.base.interfaces;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nonnull;
+
 import dunkmania101.modularmod.base.client.ui.base.interfaces.IHasVisualContent;
+import dunkmania101.modularmod.base.data.ModularModConstants;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public interface IHasSlots extends IHasVisualContent<IHasSlots> {
-
     default Container getRootContainer() {
         IHasVisualContent<?> parent = getParent();
         if (parent instanceof IHasSlots slotsParent) {
@@ -18,6 +20,7 @@ public interface IHasSlots extends IHasVisualContent<IHasSlots> {
         return null;
     }
 
+    @Nonnull
     ArrayList<Slot> getSlots();
 
     default Slot getSlot(int index) {
@@ -36,21 +39,51 @@ public interface IHasSlots extends IHasVisualContent<IHasSlots> {
         return slot;
     }
 
-    default void drawSlotGrid(int x, int y, int slotsX, int slotsY, int gap) {
+    default Slot addSlot(int x, int y, int id, Container container) {
+        return addSlot(new Slot(container, id, x, y));
+    }
+
+    default Slot addSlot(int x, int y, int id) {
+        return addSlot(x, y, id, getRootContainer());
+    }
+
+    default void drawSlotGrid(int x, int y, int gap, int slotsX, int slotsY, int startId, Container container) {
         for (int slotY = 0; slotY < slotsY; slotY++) {
             for (int slotX = 0; slotX < slotsX; slotX++) {
-                addSlot(x+(slotX*gap), y);
+                int id = slotX + slotY*slotsX;
+                if (id >= container.getContainerSize()) {
+                    return;
+                }
+                addSlot(x+(slotX*(gap+ModularModConstants.SLOT_SIZE)), y+(slotY*(gap+ModularModConstants.SLOT_SIZE)), startId+id, container);
             }
         }
     }
 
-    default void drawSlotGrid(int x, int y, int slotsX, int slotsY) {
-        drawSlotGrid(x, y, slotsX, slotsY, 2);
+    default void drawSlotGrid(int x, int y, int slotsX, int slotsY, int startId, Container container) {
+        drawSlotGrid(x, y, 2, slotsX, slotsY, startId, container);
     }
+
+    default void drawSlotGrid(int x, int y, int gap, int slotsX, int slotsY, int startId) {
+        drawSlotGrid(x, y, gap, slotsX, slotsY, startId, getRootContainer());
+    }
+
+    default void drawSlotGrid(int x, int y, int slotsX, int slotsY, int startId) {
+        drawSlotGrid(x, y, 2, slotsX, slotsY, startId);
+    }
+
+    default void drawSlotGrid(int x, int y, int slotsX, int slotsY, Container container) {
+        drawSlotGrid(x, y, 2, slotsX, slotsY, 0, container);
+    }
+
+    default void drawSlotGrid(int x, int y, int slotsX, int slotsY) {
+        drawSlotGrid(x, y, slotsX, slotsY, 0);
+    }
+
     default void drawSlots() {}
 
-    default Slot addSlot(int x, int y) {
-        return addSlot(new Slot(getRootContainer(), getSlots().size(), x, y));
+    @Override
+    default void draw() {
+        drawSlots();
     }
 
     default boolean moveItemStackTo(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection) {

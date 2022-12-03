@@ -10,4 +10,6 @@ public class ModularModConstants {
     public static final String MODULEID_BASE = "base";
 
     public static final String KEY_ROOT_DATA = "rootData";
+
+    public static final int SLOT_SIZE = 16;
 }

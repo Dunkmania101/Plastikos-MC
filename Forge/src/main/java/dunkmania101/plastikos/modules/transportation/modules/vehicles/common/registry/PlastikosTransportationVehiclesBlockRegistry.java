@@ -4,12 +4,11 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseBlockRegistryHandler;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-public class PlastikosTransportationVehiclesBlockRegistry extends BaseBlockRegistryHandler {
+public class PlastikosTransportationVehiclesBlockRegistry extends BasePlastikosBlockRegistryHandler {
     public PlastikosTransportationVehiclesBlockRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -35,10 +34,5 @@ public class PlastikosTransportationVehiclesBlockRegistry extends BaseBlockRegis
         this.SMALL_WHEEL_TIRE = this.registerObject("small_wheel_tire", () -> new Block(getBasePropertiesWood()));
         this.WHEEL_TIRE = this.registerObject("wheel_tire", () -> new Block(getBasePropertiesWood()));
         this.LARGE_WHEEL_TIRE = this.registerObject("large_wheel_tire", () -> new Block(getBasePropertiesWood()));
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

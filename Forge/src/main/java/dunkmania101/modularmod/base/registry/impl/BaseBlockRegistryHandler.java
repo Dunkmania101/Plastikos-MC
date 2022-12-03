@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.Block;
 public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler {
     private final IModularModModule PARENT;
     private final Map<ResourceLocation, Supplier<? extends Block>> ENTRIES = new HashMap<>();
-    private final IRegistryAcceptor<Block> acceptor;
+    private final IRegistryAcceptor<? extends Block> acceptor;
 
-    public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<Block> acceptor) {
+    public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<? extends Block> acceptor) {
         this.PARENT = parent;
         this.acceptor = acceptor;
     }

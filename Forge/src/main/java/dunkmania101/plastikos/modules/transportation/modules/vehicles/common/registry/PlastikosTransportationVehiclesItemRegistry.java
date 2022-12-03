@@ -4,13 +4,12 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseItemRegistryHandler;
 import dunkmania101.plastikos.PlastikosMod;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 
-public class PlastikosTransportationVehiclesItemRegistry extends BaseItemRegistryHandler {
+public class PlastikosTransportationVehiclesItemRegistry extends BasePlastikosItemRegistryHandler {
     public PlastikosTransportationVehiclesItemRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -37,10 +36,5 @@ public class PlastikosTransportationVehiclesItemRegistry extends BaseItemRegistr
 
         // Tab
         setTabIconId(this.LARGE_WHEEL_TIRE.getKey());
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

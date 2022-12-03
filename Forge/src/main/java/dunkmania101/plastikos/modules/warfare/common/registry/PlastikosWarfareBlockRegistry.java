@@ -4,12 +4,11 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
-import dunkmania101.modularmod.base.registry.impl.BaseBlockRegistryHandler;
-import dunkmania101.plastikos.data.PlastikosConstants;
+import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-public class PlastikosWarfareBlockRegistry extends BaseBlockRegistryHandler {
+public class PlastikosWarfareBlockRegistry extends BasePlastikosBlockRegistryHandler {
     public PlastikosWarfareBlockRegistry(IModularModModule parent) {
         super(parent);
     }
@@ -19,10 +18,5 @@ public class PlastikosWarfareBlockRegistry extends BaseBlockRegistryHandler {
     @Override
     public void registerObjects() {
         this.KEVLAR_TARP = this.registerObject("kevlar_tarp", () -> new Block(getBasePropertiesCloth().explosionResistance(1000)));
-    }
-
-    @Override
-    public String getModId() {
-        return PlastikosConstants.MODID;
     }
 }

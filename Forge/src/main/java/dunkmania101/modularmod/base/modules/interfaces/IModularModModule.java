@@ -13,7 +13,7 @@ public interface IModularModModule {
 
         IModularModModule parent = getParent();
         if (parent != null && parent != this) {
-            id = NameUtils.appendName(parent.getId(), id);
+            return NameUtils.appendName(parent.getId(), id);
         }
 
         return id;
@@ -31,13 +31,14 @@ public interface IModularModModule {
     }
 
     default <M extends IModularModModule> M registerChild(M child) {
-        Map<String, IModularModModule> children = this.getChildren();
-        if (children == null) {
-            return null;
-        } else {
-            children.put(child.getId(), child);
-            return child;
+        if (child != null) {
+            Map<String, IModularModModule> children = this.getChildren();
+            if (children != null) {
+                children.put(child.getId(), child);
+                return child;
+            }
         }
+        return null;
     }
 
     default boolean isEnabled() {
@@ -64,7 +65,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.earlyCommonSetup();
+                if (child != null) {
+                    child.earlyCommonSetup();
+                }
             }
         }
     }
@@ -77,7 +80,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.earlyServerSetup();
+                if (child != null) {
+                    child.earlyServerSetup();
+                }
             }
         }
     }
@@ -90,7 +95,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.earlyServerSetup();
+                if (child != null) {
+                    child.earlyServerSetup();
+                }
             }
         }
     }
@@ -100,7 +107,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.commonSetup();
+                if (child != null) {
+                    child.commonSetup();
+                }
             }
         }
     }
@@ -110,7 +119,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.clientSetup();
+                if (child != null) {
+                    child.clientSetup();
+                }
             }
         }
     }
@@ -120,7 +131,9 @@ public interface IModularModModule {
         Map<String, IModularModModule> children = this.getChildren();
         if (children != null) {
             for (IModularModModule child : children.values()) {
-                child.serverSetup();
+                if (child != null) {
+                    child.serverSetup();
+                }
             }
         }
     }
