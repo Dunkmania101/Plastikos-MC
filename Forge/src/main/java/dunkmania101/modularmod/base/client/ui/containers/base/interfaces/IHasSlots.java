@@ -3,6 +3,7 @@ package dunkmania101.modularmod.base.client.ui.containers.base.interfaces;
 import java.util.ArrayList;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import dunkmania101.modularmod.base.client.ui.base.interfaces.IHasVisualContent;
 import dunkmania101.modularmod.base.data.ModularModConstants;
@@ -39,10 +40,15 @@ public interface IHasSlots extends IHasVisualContent<IHasSlots> {
         return slot;
     }
 
+    @Nullable
     default Slot addSlot(int x, int y, int id, Container container) {
+        if (id >= container.getContainerSize()) {
+            return null;
+        }
         return addSlot(new Slot(container, id, x, y));
     }
 
+    @Nullable
     default Slot addSlot(int x, int y, int id) {
         return addSlot(x, y, id, getRootContainer());
     }
