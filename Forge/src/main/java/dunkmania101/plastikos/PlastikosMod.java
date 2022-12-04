@@ -7,6 +7,7 @@ import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.base.PlastikosModuleBase;
+import dunkmania101.plastikos.modules.control.PlastikosModuleControl;
 import dunkmania101.plastikos.modules.transportation.PlastikosModuleTransportation;
 import dunkmania101.plastikos.modules.warfare.PlastikosModuleWarfare;
 import net.minecraft.core.Registry;
@@ -29,6 +30,7 @@ public class PlastikosMod implements IModularModModule {
     protected final IRegistryAcceptor<MenuType<?>> menuAcceptor;
 
     public final PlastikosModuleBase BASE;
+    public final PlastikosModuleControl CONTROL;
     public final PlastikosModuleTransportation TRANSPORTATION;
     public final PlastikosModuleWarfare WARFARE;
 
@@ -44,6 +46,7 @@ public class PlastikosMod implements IModularModModule {
         this.MODULES = new HashMap<>();
 
         this.BASE = registerChild(new PlastikosModuleBase(this));
+        this.CONTROL = registerChild(new PlastikosModuleControl(this));
         this.TRANSPORTATION = registerChild(new PlastikosModuleTransportation(this));
         this.WARFARE = registerChild(new PlastikosModuleWarfare(this));
     }
