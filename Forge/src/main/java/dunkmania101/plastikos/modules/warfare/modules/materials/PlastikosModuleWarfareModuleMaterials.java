@@ -26,7 +26,7 @@ public class PlastikosModuleWarfareModuleMaterials implements IModularModModule 
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_WARFARE_MATERIALS;
+        return PlastikosConstants.MODULEID_MATERIALS;
     }
 
     @Override

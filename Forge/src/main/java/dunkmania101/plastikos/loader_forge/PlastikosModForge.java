@@ -1,4 +1,4 @@
-package dunkmania101.plastikos_forge;
+package dunkmania101.plastikos.loader_forge;
 
 import java.util.Map;
 import java.util.Map.Entry;

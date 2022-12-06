@@ -26,7 +26,7 @@ public class PlastikosModuleTransportationModuleVehiclesModuleRockets implements
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_TRANSPORTATION_VEHICLES_ROCKETS;
+        return PlastikosConstants.MODULEID_ROCKETS;
     }
 
     @Override

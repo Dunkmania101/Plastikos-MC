@@ -26,7 +26,7 @@ public class PlastikosModuleControlModuleTerminals implements IModularModModule 
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_CONTROL_TERMINALS;
+        return PlastikosConstants.MODULEID_TERMINALS;
     }
 
     @Override

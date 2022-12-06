@@ -4,9 +4,10 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.objects.blocks.base.BasePlastikosBlock;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
+import dunkmania101.plastikos.modules.transportation.common.objects.blocks.PalletBlock;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 
 public class PlastikosTransportationBlockRegistry extends BasePlastikosBlockRegistryHandler {
     public PlastikosTransportationBlockRegistry(IModularModModule parent) {
@@ -14,11 +15,13 @@ public class PlastikosTransportationBlockRegistry extends BasePlastikosBlockRegi
     }
 
     // Misc {
-    public Entry<ResourceLocation, Supplier<Block>> TRAFFIC_CONE;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> TRAFFIC_CONE;
+    public Entry<ResourceLocation, Supplier<PalletBlock>> PALLET;
     // }
 
     @Override
     public void registerObjects() {
-        this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new Block(getBasePropertiesWood()));
+        this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
+        this.PALLET = this.registerObject("pallet", () -> new PalletBlock(getParentModule(), getBasePropertiesWood()));
     }
 }

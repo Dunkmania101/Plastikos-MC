@@ -8,6 +8,8 @@ import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.base.PlastikosModuleBase;
 import dunkmania101.plastikos.modules.control.PlastikosModuleControl;
+import dunkmania101.plastikos.modules.logistics.PlastikosModuleLogistics;
+import dunkmania101.plastikos.modules.mobs.PlastikosModuleMobs;
 import dunkmania101.plastikos.modules.transportation.PlastikosModuleTransportation;
 import dunkmania101.plastikos.modules.warfare.PlastikosModuleWarfare;
 import net.minecraft.core.Registry;
@@ -31,8 +33,10 @@ public class PlastikosMod implements IModularModModule {
 
     public final PlastikosModuleBase BASE;
     public final PlastikosModuleControl CONTROL;
+    public final PlastikosModuleLogistics LOGISTICS;
     public final PlastikosModuleTransportation TRANSPORTATION;
     public final PlastikosModuleWarfare WARFARE;
+    public final PlastikosModuleMobs MOBS;
 
     public PlastikosMod(IRegistryAcceptor<Item> itemAcceptor, IRegistryAcceptor<Block> blockAcceptor, IRegistryAcceptor<BlockEntityType<?>> blockEntityAcceptor, IRegistryAcceptor<EntityType<?>> entityAcceptor, IRegistryAcceptor<MenuType<?>> menuAcceptor) {
         INSTANCE = this;
@@ -47,8 +51,10 @@ public class PlastikosMod implements IModularModModule {
 
         this.BASE = registerChild(new PlastikosModuleBase(this));
         this.CONTROL = registerChild(new PlastikosModuleControl(this));
+        this.LOGISTICS = registerChild(new PlastikosModuleLogistics(this));
         this.TRANSPORTATION = registerChild(new PlastikosModuleTransportation(this));
         this.WARFARE = registerChild(new PlastikosModuleWarfare(this));
+        this.MOBS = registerChild(new PlastikosModuleMobs(this));
     }
 
     @Override
@@ -61,6 +67,7 @@ public class PlastikosMod implements IModularModModule {
         return this.MODULES;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public IRegistryAcceptor<?> getRegistryAcceptorOfId(ResourceLocation registry) {
         if (registry == Registry.ITEM_REGISTRY.location()) {

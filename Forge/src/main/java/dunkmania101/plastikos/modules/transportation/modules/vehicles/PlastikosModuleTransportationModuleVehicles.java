@@ -40,7 +40,7 @@ public class PlastikosModuleTransportationModuleVehicles implements IModularModM
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_TRANSPORTATION_VEHICLES;
+        return PlastikosConstants.MODULEID_VEHICLES;
     }
 
     @Override

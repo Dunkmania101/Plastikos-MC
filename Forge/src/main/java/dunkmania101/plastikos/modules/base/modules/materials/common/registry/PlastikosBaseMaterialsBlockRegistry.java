@@ -4,25 +4,29 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.objects.blocks.base.BasePlastikosBlock;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 
 public class PlastikosBaseMaterialsBlockRegistry extends BasePlastikosBlockRegistryHandler {
     public PlastikosBaseMaterialsBlockRegistry(IModularModModule parent) {
         super(parent);
     }
 
-    public Entry<ResourceLocation, Supplier<Block>> CLOTH_FRAME_WRAP;
-    public Entry<ResourceLocation, Supplier<Block>> WOODEN_FRAME;
-    public Entry<ResourceLocation, Supplier<Block>> STONE_FRAME;
-    public Entry<ResourceLocation, Supplier<Block>> IRON_FRAME;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> CAST_IRON_BLOCK;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> STEEL_BLOCK;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> BRASS_BLOCK;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> BRONZE_BLOCK;
+
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> ARAMID_SHEET;
 
     @Override
     public void registerObjects() {
-        this.CLOTH_FRAME_WRAP = this.registerObject("cloth_frame_wrap", () -> new Block(getBasePropertiesWood()));
-        this.WOODEN_FRAME = this.registerObject("wooden_frame", () -> new Block(getBasePropertiesWood()));
-        this.STONE_FRAME = this.registerObject("stone_frame", () -> new Block(getBasePropertiesStone()));
-        this.IRON_FRAME = this.registerObject("iron_frame", () -> new Block(getBasePropertiesMetal()));
+        this.CAST_IRON_BLOCK = this.registerObject("cast_iron_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
+        this.STEEL_BLOCK = this.registerObject("steel_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
+        this.BRASS_BLOCK = this.registerObject("brass_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
+        this.BRONZE_BLOCK = this.registerObject("bronze_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
+
+        this.ARAMID_SHEET = this.registerObject("aramid_sheet", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWool().explosionResistance(1000)));
     }
 }

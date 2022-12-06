@@ -26,7 +26,7 @@ public class PlastikosModuleTransportationModuleVehiclesModuleLand implements IM
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_TRANSPORTATION_VEHICLES_LAND;
+        return PlastikosConstants.MODULEID_LAND;
     }
 
     @Override

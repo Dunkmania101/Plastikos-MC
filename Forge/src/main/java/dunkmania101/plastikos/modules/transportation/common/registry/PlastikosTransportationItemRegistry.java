@@ -5,9 +5,9 @@ import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.plastikos.PlastikosMod;
+import dunkmania101.plastikos.base.objects.items.base.BasePlastikosBlockItem;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 
 public class PlastikosTransportationItemRegistry extends BasePlastikosItemRegistryHandler {
     public PlastikosTransportationItemRegistry(IModularModModule parent) {
@@ -15,12 +15,14 @@ public class PlastikosTransportationItemRegistry extends BasePlastikosItemRegist
     }
 
     // BlockItems {
-    public Entry<ResourceLocation, Supplier<BlockItem>> TRAFFIC_CONE;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> TRAFFIC_CONE;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> PALLET;
     // }
 
     @Override
     public void registerObjects() {
-        this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new BlockItem(PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.TRAFFIC_CONE.getValue().get(), getBaseProperties()));
+        this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.TRAFFIC_CONE.getValue().get(), getBaseProperties()));
+        this.PALLET = this.registerObject("pallet", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.PALLET.getValue().get(), getBaseProperties()));
 
         // Tab
         setTabIconId(this.TRAFFIC_CONE.getKey());

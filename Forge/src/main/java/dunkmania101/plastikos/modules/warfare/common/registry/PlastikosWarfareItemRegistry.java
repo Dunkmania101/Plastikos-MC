@@ -5,22 +5,22 @@ import java.util.function.Supplier;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.plastikos.PlastikosMod;
+import dunkmania101.plastikos.base.objects.items.base.BasePlastikosBlockItem;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 
 public class PlastikosWarfareItemRegistry extends BasePlastikosItemRegistryHandler {
     public PlastikosWarfareItemRegistry(IModularModModule parent) {
         super(parent);
     }
 
-    public Entry<ResourceLocation, Supplier<BlockItem>> KEVLAR_TARP;
+    public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> ARAMID_TARP;
 
     @Override
     public void registerObjects() {
-        this.KEVLAR_TARP = this.registerObject("kevlar_tarp", () -> new BlockItem(PlastikosMod.INSTANCE.WARFARE.BLOCKS.KEVLAR_TARP.getValue().get(), getBaseProperties()));
+        this.ARAMID_TARP = this.registerObject("aramid_tarp", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.WARFARE.BLOCKS.ARAMID_TARP.getValue().get(), getBaseProperties()));
 
         // Tab
-        setTabIconId(this.KEVLAR_TARP.getKey());
+        setTabIconId(this.ARAMID_TARP.getKey());
     }
 }

@@ -6,6 +6,10 @@ import net.minecraft.world.level.material.Material;
 
 public interface IBlockRegistryHandler extends IRegistryHandler<Block> {
     default Properties getBasePropertiesCloth() {
+        return Properties.of(Material.CLOTH_DECORATION);
+    }
+
+    default Properties getBasePropertiesWool() {
         return Properties.of(Material.WOOL);
     }
 

@@ -26,7 +26,7 @@ public class PlastikosModuleTransportationModuleVehiclesModuleAir implements IMo
 
     @Override
     public String getBaseId() {
-        return PlastikosConstants.MODULEID_TRANSPORTATION_VEHICLES_AIR;
+        return PlastikosConstants.MODULEID_AIR;
     }
 
     @Override
