@@ -9,16 +9,16 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BaseModularModBlockEntity extends BlockEntity implements IModularModContentObject {
-    protected final IModularModModule PARENT_MODULE;
+public class BaseModularModBlockEntity<M extends IModularModModule<?>> extends BlockEntity implements IModularModContentObject<M> {
+    protected final M PARENT_MODULE;
 
-    public BaseModularModBlockEntity(IModularModModule parentModule, BlockEntityType<BaseModularModBlockEntity> beType, BlockPos pos, BlockState state) {
+    public BaseModularModBlockEntity(M parentModule, BlockEntityType<BaseModularModBlockEntity<M>> beType, BlockPos pos, BlockState state) {
         super(beType, pos, state);
         this.PARENT_MODULE = parentModule;
     }
 
     @Override
-    public IModularModModule getParentModule() {
+    public M getParentModule() {
         return this.PARENT_MODULE;
     }
 

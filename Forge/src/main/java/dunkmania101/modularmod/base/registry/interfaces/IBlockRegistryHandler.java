@@ -1,10 +1,11 @@
 package dunkmania101.modularmod.base.registry.interfaces;
 
+import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
 
-public interface IBlockRegistryHandler extends IRegistryHandler<Block> {
+public interface IBlockRegistryHandler<M extends IModularModModule<?>> extends IRegistryHandler<Block, M> {
     default Properties getBasePropertiesCloth() {
         return Properties.of(Material.CLOTH_DECORATION);
     }

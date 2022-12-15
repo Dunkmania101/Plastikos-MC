@@ -1,11 +1,12 @@
 package dunkmania101.modularmod.base.registry.interfaces;
 
 import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
+import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
-public interface IItemRegistryHandler extends IRegistryHandler<Item> {
+public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IRegistryHandler<Item, M> {
     CreativeModeTab getCreativeModeTab();
     void setCreativeModeTab(CreativeModeTab tab);
     default void createCreativeModeTab() {

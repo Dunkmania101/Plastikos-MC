@@ -8,12 +8,12 @@ import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
-public interface IRegistryHandler<T> extends IRegistryAcceptor<T> {
+public interface IRegistryHandler<T, M extends IModularModModule<?>> extends IRegistryAcceptor<T> {
     IRegistryAcceptor<? extends T> getAcceptor();
 
     Map<ResourceLocation, Supplier<? extends T>> getEntries();
 
-    IModularModModule getParentModule();
+    M getParentModule();
 
     String getModId();
     default String getModuleId() {

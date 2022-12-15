@@ -3,15 +3,15 @@ package dunkmania101.plastikos.modules.base.common.registry;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.plastikos.PlastikosMod;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.base.objects.items.base.BasePlastikosBlockItem;
 import dunkmania101.plastikos.base.objects.items.base.BasePlastikosItem;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosItemRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlastikosBaseItemRegistry extends BasePlastikosItemRegistryHandler {
-    public PlastikosBaseItemRegistry(IModularModModule parent) {
+    public PlastikosBaseItemRegistry(IPlastikosModule parent) {
         super(parent);
     }
 

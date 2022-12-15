@@ -1,24 +1,17 @@
 package dunkmania101.plastikos.modules.control.modules.terminals;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.modules.impl.BasePlastikosModule;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.control.modules.terminals.common.registry.PlastikosControlTerminalsBlockRegistry;
 import dunkmania101.plastikos.modules.control.modules.terminals.common.registry.PlastikosControlTerminalsItemRegistry;
 
-public class PlastikosModuleControlModuleTerminals implements IModularModModule {
-    protected final IModularModModule PARENT;
-
-    public final Map<String, IModularModModule> MODULES;
-
+public class PlastikosModuleControlModuleTerminals extends BasePlastikosModule {
     public final PlastikosControlTerminalsBlockRegistry BLOCKS;
     public final PlastikosControlTerminalsItemRegistry ITEMS;
 
-    public PlastikosModuleControlModuleTerminals(IModularModModule parent) {
-        this.PARENT = parent;
-        this.MODULES = new HashMap<>();
+    public PlastikosModuleControlModuleTerminals(IPlastikosModule parent) {
+        super(parent);
 
         this.BLOCKS = new PlastikosControlTerminalsBlockRegistry(this);
         this.ITEMS = new PlastikosControlTerminalsItemRegistry(this);
@@ -27,16 +20,6 @@ public class PlastikosModuleControlModuleTerminals implements IModularModModule 
     @Override
     public String getBaseId() {
         return PlastikosConstants.MODULEID_TERMINALS;
-    }
-
-    @Override
-    public IModularModModule getParent() {
-        return this.PARENT;
-    }
-
-    @Override
-    public Map<String, IModularModModule> getChildren() {
-        return this.MODULES;
     }
 
     @Override

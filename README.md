@@ -1,5 +1,5 @@
 # Plastikos
-A Minecraft mod that is very flexible. Plastikos indeed!
+A Minecraft mod that provides very flexible building blocks. Plastikos Atomos!
 
 This is the 1.19.2-Forge development branch
 

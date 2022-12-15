@@ -1,24 +1,17 @@
 package dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.land;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.modules.impl.BasePlastikosModule;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.land.common.registry.PlastikosTransportationVehiclesLandBlockRegistry;
 import dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.land.common.registry.PlastikosTransportationVehiclesLandItemRegistry;
 
-public class PlastikosModuleTransportationModuleVehiclesModuleLand implements IModularModModule {
-    protected final IModularModModule PARENT;
-
-    public final Map<String, IModularModModule> MODULES;
-
+public class PlastikosModuleTransportationModuleVehiclesModuleLand extends BasePlastikosModule {
     public final PlastikosTransportationVehiclesLandBlockRegistry BLOCKS;
     public final PlastikosTransportationVehiclesLandItemRegistry ITEMS;
 
-    public PlastikosModuleTransportationModuleVehiclesModuleLand(IModularModModule parent) {
-        this.PARENT = parent;
-        this.MODULES = new HashMap<>();
+    public PlastikosModuleTransportationModuleVehiclesModuleLand(IPlastikosModule parent) {
+        super(parent);
 
         this.BLOCKS = new PlastikosTransportationVehiclesLandBlockRegistry(this);
         this.ITEMS = new PlastikosTransportationVehiclesLandItemRegistry(this);
@@ -27,16 +20,6 @@ public class PlastikosModuleTransportationModuleVehiclesModuleLand implements IM
     @Override
     public String getBaseId() {
         return PlastikosConstants.MODULEID_LAND;
-    }
-
-    @Override
-    public IModularModModule getParent() {
-        return this.PARENT;
-    }
-
-    @Override
-    public Map<String, IModularModModule> getChildren() {
-        return this.MODULES;
     }
 
     @Override

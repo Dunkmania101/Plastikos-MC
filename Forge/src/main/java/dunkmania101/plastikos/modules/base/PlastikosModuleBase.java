@@ -1,47 +1,30 @@
 package dunkmania101.plastikos.modules.base;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.modules.impl.BasePlastikosModule;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.base.common.registry.PlastikosBaseBlockRegistry;
 import dunkmania101.plastikos.modules.base.common.registry.PlastikosBaseItemRegistry;
 import dunkmania101.plastikos.modules.base.modules.materials.PlastikosModuleBaseModuleMaterials;
 
-public class PlastikosModuleBase implements IModularModModule {
-    protected final IModularModModule PARENT;
-
-    public final Map<String, IModularModModule> MODULES;
-
+public class PlastikosModuleBase extends BasePlastikosModule {
     public final PlastikosModuleBaseModuleMaterials MATERIALS;
 
     public final PlastikosBaseBlockRegistry BLOCKS;
     public final PlastikosBaseItemRegistry ITEMS;
 
-    public PlastikosModuleBase(IModularModModule parent) {
-        this.PARENT = parent;
-        this.MODULES = new HashMap<>();
-
-        this.MATERIALS = registerChild(new PlastikosModuleBaseModuleMaterials(this));
+    public PlastikosModuleBase(IPlastikosModule parent) {
+        super(parent);
 
         this.BLOCKS = new PlastikosBaseBlockRegistry(this);
         this.ITEMS = new PlastikosBaseItemRegistry(this);
+
+        this.MATERIALS = registerChild(new PlastikosModuleBaseModuleMaterials(this));
     }
 
     @Override
     public String getBaseId() {
         return PlastikosConstants.MODULEID_BASE;
-    }
-
-    @Override
-    public IModularModModule getParent() {
-        return this.PARENT;
-    }
-
-    @Override
-    public Map<String, IModularModModule> getChildren() {
-        return this.MODULES;
     }
 
     @Override

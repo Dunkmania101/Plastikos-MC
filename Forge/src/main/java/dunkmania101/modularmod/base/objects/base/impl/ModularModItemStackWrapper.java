@@ -8,18 +8,18 @@ import dunkmania101.modularmod.base.objects.base.interfaces.IModularModContentOb
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
-public class ModularModItemStackWrapper implements IModularModContentObject {
-    private final IModularModModule PARENT_MODULE;
+public class ModularModItemStackWrapper<M extends IModularModModule<?>> implements IModularModContentObject<M> {
+    private final M PARENT_MODULE;
     @Nonnull
     private final ItemStack stack;
 
-    public ModularModItemStackWrapper(IModularModModule parentModule, @Nonnull ItemStack stack) {
+    public ModularModItemStackWrapper(M parentModule, @Nonnull ItemStack stack) {
         this.PARENT_MODULE = parentModule;
         this.stack = stack;
     }
 
     @Override
-    public IModularModModule getParentModule() {
+    public M getParentModule() {
         return this.PARENT_MODULE;
     }
 

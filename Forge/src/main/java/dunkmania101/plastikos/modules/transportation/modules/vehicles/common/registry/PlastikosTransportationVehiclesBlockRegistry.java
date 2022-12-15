@@ -3,13 +3,13 @@ package dunkmania101.plastikos.modules.transportation.modules.vehicles.common.re
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.base.objects.blocks.base.BasePlastikosBlock;
 import dunkmania101.plastikos.base.registry.impl.BasePlastikosBlockRegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlastikosTransportationVehiclesBlockRegistry extends BasePlastikosBlockRegistryHandler {
-    public PlastikosTransportationVehiclesBlockRegistry(IModularModModule parent) {
+    public PlastikosTransportationVehiclesBlockRegistry(IPlastikosModule parent) {
         super(parent);
     }
 

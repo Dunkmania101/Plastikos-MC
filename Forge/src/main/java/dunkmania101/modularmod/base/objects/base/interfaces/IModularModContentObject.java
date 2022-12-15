@@ -10,8 +10,8 @@ import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 
-public interface IModularModContentObject {
-    IModularModModule getParentModule();
+public interface IModularModContentObject<M extends IModularModModule<?>> {
+    M getParentModule();
     default String getBaseId() {
         return ModularModConstants.BLANKID;
     }

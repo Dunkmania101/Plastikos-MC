@@ -12,20 +12,20 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
-public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
-    private final IModularModModule PARENT;
+public abstract class BaseItemRegistryHandler<M extends IModularModModule<?>> implements IItemRegistryHandler<M> {
+    private final M PARENT;
     private final Map<ResourceLocation, Supplier<? extends Item>> ENTRIES = new HashMap<>();
     private ResourceLocation TAB_ICON_ID;
     private CreativeModeTab CREATIVE_MODE_TAB;
     private final IRegistryAcceptor<? extends Item> acceptor;
 
-    public BaseItemRegistryHandler(IModularModModule parent, IRegistryAcceptor<? extends Item> acceptor) {
+    public BaseItemRegistryHandler(M parent, IRegistryAcceptor<? extends Item> acceptor) {
         this.PARENT = parent;
         this.acceptor = acceptor;
         this.createCreativeModeTab();
     }
 
-    public BaseItemRegistryHandler(IModularModModule parent) {
+    public BaseItemRegistryHandler(M parent) {
         this(parent, parent.getRegistryAcceptorOfId(Registry.ITEM_REGISTRY.location()));
     }
 
@@ -35,7 +35,7 @@ public abstract class BaseItemRegistryHandler implements IItemRegistryHandler {
     }
 
     @Override
-    public IModularModModule getParentModule() {
+    public M getParentModule() {
         return this.PARENT;
     }
 

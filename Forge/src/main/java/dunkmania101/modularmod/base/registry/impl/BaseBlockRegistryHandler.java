@@ -11,17 +11,17 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler {
-    private final IModularModModule PARENT;
+public abstract class BaseBlockRegistryHandler<M extends IModularModModule<?>> implements IBlockRegistryHandler<M> {
+    private final M PARENT;
     private final Map<ResourceLocation, Supplier<? extends Block>> ENTRIES = new HashMap<>();
     private final IRegistryAcceptor<? extends Block> acceptor;
 
-    public BaseBlockRegistryHandler(IModularModModule parent, IRegistryAcceptor<? extends Block> acceptor) {
+    public BaseBlockRegistryHandler(M parent, IRegistryAcceptor<? extends Block> acceptor) {
         this.PARENT = parent;
         this.acceptor = acceptor;
     }
 
-    public BaseBlockRegistryHandler(IModularModModule parent) {
+    public BaseBlockRegistryHandler(M parent) {
         this(parent, parent.getRegistryAcceptorOfId(Registry.BLOCK_REGISTRY.location()));
     }
 
@@ -31,7 +31,7 @@ public abstract class BaseBlockRegistryHandler implements IBlockRegistryHandler 
     }
 
     @Override
-    public IModularModModule getParentModule() {
+    public M getParentModule() {
         return this.PARENT;
     }
 

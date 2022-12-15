@@ -5,16 +5,16 @@ import dunkmania101.modularmod.base.objects.base.interfaces.IModularModContentOb
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 
-public class BaseModularModBlockItem extends BlockItem implements IModularModContentObject {
-    protected final IModularModModule PARENT_MODULE;
+public class BaseModularModBlockItem<M extends IModularModModule<?>> extends BlockItem implements IModularModContentObject<M> {
+    protected final M PARENT_MODULE;
 
-    public BaseModularModBlockItem(IModularModModule parentModule, Block block, Properties properties) {
+    public BaseModularModBlockItem(M parentModule, Block block, Properties properties) {
         super(block, properties);
         this.PARENT_MODULE = parentModule;
     }
 
     @Override
-    public IModularModModule getParentModule() {
+    public M getParentModule() {
         return this.PARENT_MODULE;
     }
 }

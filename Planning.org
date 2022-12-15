@@ -1,0 +1,16 @@
+* Modules
+** Base
+*** Materials
+**** Metals
+***** Raw
+****** Silver
+****** Tin
+****** Zinc
+***** Processed
+****** Cast Iron
+****** Alloys
+******* Bronze
+******* Brass
+** Transportation
+*** Vehicles
+** Warfare

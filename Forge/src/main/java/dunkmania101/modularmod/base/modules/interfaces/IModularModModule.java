@@ -1,17 +1,19 @@
 package dunkmania101.modularmod.base.modules.interfaces;
 
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Optional;
 
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
-public interface IModularModModule {
+public interface IModularModModule<T extends IModularModModule<?>> {
     String getBaseId();
     default String getId() {
         String id = getBaseId();
 
-        IModularModModule parent = getParent();
+        T parent = getParent();
         if (parent != null && parent != this) {
             return NameUtils.appendName(parent.getId(), id);
         }
@@ -23,16 +25,54 @@ public interface IModularModModule {
         return this.getId();
     }
 
-    default Map<String, IModularModModule> getChildren() {
-        return null;
-    }
-    default IModularModModule getParent() {
+    T getRoot();
+    default T getParent() {
         return null;
     }
 
-    default <M extends IModularModModule> M registerChild(M child) {
+    default ArrayList<String> getDependencyIds() {
+        return new ArrayList<>();
+    }
+
+    default Map<String, T> getChildren() {
+        return null;
+    }
+    @SuppressWarnings("unchecked")
+    default Optional<T> getChild(String id) {
+        if (!id.isBlank()) {
+            String[] parts = NameUtils.separateParent(id);
+            if (parts.length >= 1) {
+                Map<String, T> children = getChildren();
+                T child = children.getOrDefault(parts, null);
+                if (child != null) {
+                    if (parts.length == 1) {
+                        return Optional.of(child);
+                    } else {
+                        return (Optional<T>) child.getChild(parts[1]);
+                    }
+                }
+            }
+        }
+        return Optional.empty();
+    }
+    default boolean isChildDependable(String id) {
+        Optional<T> child = getChild(id);
+        if (child.isPresent()) {
+            return child.get().isDependable();
+        }
+        return false;
+    }
+
+    default boolean isDepDepdable(String id) {
+        return getRoot().isChildDependable(id);
+    }
+    default boolean areAllDepsDependable() {
+        return getDependencyIds().isEmpty() ? true : getDependencyIds().stream().allMatch(id -> isDepDepdable(id));
+    }
+
+    default <M extends T> M registerChild(M child) {
         if (child != null) {
-            Map<String, IModularModModule> children = this.getChildren();
+            Map<String, T> children = this.getChildren();
             if (children != null) {
                 children.put(child.getId(), child);
                 return child;
@@ -47,9 +87,15 @@ public interface IModularModModule {
     default boolean isAllowedToRegister() {
         return true;
     }
+    default boolean isLoadable() {
+        return isAllowedToRegister() && areAllDepsDependable();
+    }
+    default boolean isDependable() {
+        return isAllowedToRegister() && isLoadable();
+    }
 
-    default <T> IRegistryAcceptor<T> getRegistryAcceptorOfId(ResourceLocation registry) {
-        IModularModModule parent = this.getParent();
+    default <R> IRegistryAcceptor<R> getRegistryAcceptorOfId(ResourceLocation registry) {
+        T parent = this.getParent();
         if (parent == null || parent == this) {
             return null;
         } else {
@@ -62,9 +108,9 @@ public interface IModularModModule {
         if (isAllowedToRegister()) {
             commonRegistrySetup();
         }
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.earlyCommonSetup();
                 }
@@ -77,9 +123,9 @@ public interface IModularModModule {
         if (isAllowedToRegister()) {
             serverRegistrySetup();
         }
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.earlyServerSetup();
                 }
@@ -92,9 +138,9 @@ public interface IModularModModule {
         if (isAllowedToRegister()) {
             serverRegistrySetup();
         }
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.earlyServerSetup();
                 }
@@ -104,9 +150,9 @@ public interface IModularModModule {
 
     default void commonSetup() {
         commonGeneralSetup();
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.commonSetup();
                 }
@@ -116,9 +162,9 @@ public interface IModularModModule {
 
     default void clientSetup() {
         clientGeneralSetup();
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.clientSetup();
                 }
@@ -128,9 +174,9 @@ public interface IModularModModule {
 
     default void serverSetup() {
         serverGeneralSetup();
-        Map<String, IModularModModule> children = this.getChildren();
+        Map<String, T> children = this.getChildren();
         if (children != null) {
-            for (IModularModModule child : children.values()) {
+            for (T child : children.values()) {
                 if (child != null) {
                     child.serverSetup();
                 }

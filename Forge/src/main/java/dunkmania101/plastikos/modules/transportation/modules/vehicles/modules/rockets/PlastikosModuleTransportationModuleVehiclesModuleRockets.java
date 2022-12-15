@@ -1,24 +1,17 @@
 package dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.rockets;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
+import dunkmania101.plastikos.base.modules.impl.BasePlastikosModule;
+import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.data.PlastikosConstants;
 import dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.rockets.common.registry.PlastikosTransportationVehiclesRocketsBlockRegistry;
 import dunkmania101.plastikos.modules.transportation.modules.vehicles.modules.rockets.common.registry.PlastikosTransportationVehiclesRocketsItemRegistry;
 
-public class PlastikosModuleTransportationModuleVehiclesModuleRockets implements IModularModModule {
-    protected final IModularModModule PARENT;
-
-    public final Map<String, IModularModModule> MODULES;
-
+public class PlastikosModuleTransportationModuleVehiclesModuleRockets extends BasePlastikosModule {
     public final PlastikosTransportationVehiclesRocketsBlockRegistry BLOCKS;
     public final PlastikosTransportationVehiclesRocketsItemRegistry ITEMS;
 
-    public PlastikosModuleTransportationModuleVehiclesModuleRockets(IModularModModule parent) {
-        this.PARENT = parent;
-        this.MODULES = new HashMap<>();
+    public PlastikosModuleTransportationModuleVehiclesModuleRockets(IPlastikosModule parent) {
+        super(parent);
 
         this.BLOCKS = new PlastikosTransportationVehiclesRocketsBlockRegistry(this);
         this.ITEMS = new PlastikosTransportationVehiclesRocketsItemRegistry(this);
@@ -27,16 +20,6 @@ public class PlastikosModuleTransportationModuleVehiclesModuleRockets implements
     @Override
     public String getBaseId() {
         return PlastikosConstants.MODULEID_ROCKETS;
-    }
-
-    @Override
-    public IModularModModule getParent() {
-        return this.PARENT;
-    }
-
-    @Override
-    public Map<String, IModularModModule> getChildren() {
-        return this.MODULES;
     }
 
     @Override
