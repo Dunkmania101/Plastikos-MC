@@ -4,6 +4,7 @@ import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.plastikos.PlastikosMod;
 
 public interface IPlastikosModule extends IModularModModule<IPlastikosModule> {
+    @Override
     default String getFriendlyName() {
         return this.getId();
     }

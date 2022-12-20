@@ -34,10 +34,11 @@ public class PlastikosConstants {
     public static final String MODULEID_ASSEMBLING = "assembling";
     public static final String MODULEID_TINKERING = "tinkering";
     public static final String MODULEID_WORLD = "world";
+    public static final String MODULEID_SPACE = "space";
+    public static final String MODULEID_PLANETS = "planets";
     public static final String MODULEID_MOBS = "mobs";
     public static final String MODULEID_WILDLIFE = "wildlife";
     public static final String MODULEID_MONSTERS = "monsters";
-    public static final String MODULEID_WORLD_SPACE = "space";
     public static final String MODULEID_TRANSPORTATION = "transportation";
     public static final String MODULEID_VEHICLES = "vehicles";
     public static final String MODULEID_LAND = "land";

@@ -12,10 +12,10 @@ import net.minecraft.network.chat.Component;
 
 public interface IModularModContentObject<M extends IModularModModule<?>> {
     M getParentModule();
+
     default String getBaseId() {
         return ModularModConstants.BLANKID;
     }
-
     default String getId() {
         return NameUtils.appendName(getParentModule().getId(), getBaseId());
     }

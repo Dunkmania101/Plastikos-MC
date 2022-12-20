@@ -1,7 +1,10 @@
 package dunkmania101.plastikos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.ibm.icu.impl.Pair;
 
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
@@ -13,6 +16,7 @@ import dunkmania101.plastikos.modules.mobs.PlastikosModuleMobs;
 import dunkmania101.plastikos.modules.production.PlastikosModuleProduction;
 import dunkmania101.plastikos.modules.transportation.PlastikosModuleTransportation;
 import dunkmania101.plastikos.modules.warfare.PlastikosModuleWarfare;
+import dunkmania101.plastikos.modules.world.PlastikosModuleWorld;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -33,12 +37,13 @@ public class PlastikosMod implements IPlastikosModule {
     protected final IRegistryAcceptor<MenuType<?>> menuAcceptor;
 
     public final PlastikosModuleBase BASE;
+    public final PlastikosModuleWorld WORLD;
+    public final PlastikosModuleMobs MOBS;
     public final PlastikosModuleControl CONTROL;
     public final PlastikosModuleProduction PRODUCTION;
     public final PlastikosModuleLogistics LOGISTICS;
     public final PlastikosModuleTransportation TRANSPORTATION;
     public final PlastikosModuleWarfare WARFARE;
-    public final PlastikosModuleMobs MOBS;
 
     public PlastikosMod(IRegistryAcceptor<Item> itemAcceptor, IRegistryAcceptor<Block> blockAcceptor, IRegistryAcceptor<BlockEntityType<?>> blockEntityAcceptor, IRegistryAcceptor<EntityType<?>> entityAcceptor, IRegistryAcceptor<MenuType<?>> menuAcceptor) {
         INSTANCE = this;
@@ -52,6 +57,7 @@ public class PlastikosMod implements IPlastikosModule {
         this.MODULES = new HashMap<>();
 
         this.BASE = registerChild(new PlastikosModuleBase(this));
+        this.WORLD = registerChild(new PlastikosModuleWorld(this));
         this.CONTROL = registerChild(new PlastikosModuleControl(this));
         this.PRODUCTION = registerChild(new PlastikosModuleProduction(this));
         this.LOGISTICS = registerChild(new PlastikosModuleLogistics(this));
@@ -86,5 +92,20 @@ public class PlastikosMod implements IPlastikosModule {
         }
 
         return null;
+    }
+
+    @Override
+    public boolean parentIsDep() {
+        return false;
+    }
+
+    @Override
+    public ArrayList<Pair<String, Boolean>> getDependencyIds() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public boolean isDependable() {
+        return true;
     }
 }
