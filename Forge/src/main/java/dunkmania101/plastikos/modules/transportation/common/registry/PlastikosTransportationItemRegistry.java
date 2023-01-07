@@ -20,7 +20,7 @@ public class PlastikosTransportationItemRegistry extends BasePlastikosItemRegist
     // }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.TRAFFIC_CONE = this.registerObject("traffic_cone", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.TRAFFIC_CONE.getValue().get(), getBaseProperties()));
         this.PALLET = this.registerObject("pallet", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.BLOCKS.PALLET.getValue().get(), getBaseProperties()));
 

@@ -9,6 +9,6 @@ public class PlastikosWorldBlockRegistry extends BasePlastikosBlockRegistryHandl
     }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
     }
 }

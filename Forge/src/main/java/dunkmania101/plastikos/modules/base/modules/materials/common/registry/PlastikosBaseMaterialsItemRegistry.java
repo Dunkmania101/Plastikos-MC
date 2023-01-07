@@ -37,7 +37,7 @@ public class PlastikosBaseMaterialsItemRegistry extends BasePlastikosItemRegistr
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> ARAMID_SHEET;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // Ingredients
         this.PLASTIC_POWDER = this.registerObject("plastic_powder", () -> new BasePlastikosItem(getParentModule(), getBaseProperties()));
         this.PLASTIC_PELLETS = this.registerObject("plastic_pellets", () -> new BasePlastikosItem(getParentModule(), getBaseProperties()));

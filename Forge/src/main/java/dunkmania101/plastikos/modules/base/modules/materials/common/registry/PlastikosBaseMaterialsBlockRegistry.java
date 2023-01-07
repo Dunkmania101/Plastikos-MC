@@ -21,7 +21,7 @@ public class PlastikosBaseMaterialsBlockRegistry extends BasePlastikosBlockRegis
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> ARAMID_SHEET;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.CAST_IRON_BLOCK = this.registerObject("cast_iron_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
         this.STEEL_BLOCK = this.registerObject("steel_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
         this.BRASS_BLOCK = this.registerObject("brass_block", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));

@@ -3,12 +3,11 @@ package dunkmania101.modularmod.base.registry.interfaces;
 import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IRegistryHandler<Item, M> {
-    CreativeModeTab getCreativeModeTab();
-    void setCreativeModeTab(CreativeModeTab tab);
+    ModularModCreativeModeTab getCreativeModeTab();
+    void setCreativeModeTab(ModularModCreativeModeTab tab);
     default void createCreativeModeTab() {
         this.setCreativeModeTab(new ModularModCreativeModeTab(getParentModule().getFriendlyName()) {
             @Override
@@ -16,6 +15,7 @@ public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IR
                 return getTabIconId();
             }
         });
+        getParentModule().addCreativeTab(getCreativeModeTab());
     }
 
     default Item.Properties getBaseProperties() {
@@ -29,4 +29,10 @@ public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IR
     default ResourceLocation getTabIconId() {return null;}
     default void setTabIconId(ResourceLocation id) {}
     default void updateTabIconId() {}
+
+    @Override
+    default void postRegisterObjects() {
+        IRegistryHandler.super.postRegisterObjects();
+        createCreativeModeTab();
+    }
 }

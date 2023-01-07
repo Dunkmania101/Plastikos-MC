@@ -16,7 +16,7 @@ public class PlastikosMobsWildlifeBlockRegistry extends BasePlastikosBlockRegist
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> LIVING_BLOOM;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.LIVING_BLOOM = this.registerObject("living_bloom", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
     }
 }

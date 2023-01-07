@@ -23,9 +23,14 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
        return Registry.ITEM.getDefaultKey();
     }
 
-    @Override
     public ItemStack makeIcon() {
         ResourceLocation iconId = this.getIconId();
         return new ItemStack(Registry.ITEM.get(iconId == null ? this.getBlankIconId() : iconId));
     }
+
+    @Override
+    public ItemStack getIconItem() {
+        return makeIcon();
+    }
 }
+

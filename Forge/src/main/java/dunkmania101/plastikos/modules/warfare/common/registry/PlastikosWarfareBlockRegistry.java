@@ -16,7 +16,7 @@ public class PlastikosWarfareBlockRegistry extends BasePlastikosBlockRegistryHan
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> ARAMID_TARP;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.ARAMID_TARP = this.registerObject("aramid_tarp", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWool().explosionResistance(1000)));
     }
 }

@@ -17,7 +17,7 @@ public class PlastikosLogisticsStorageItemRegistry extends BasePlastikosItemRegi
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> SHIPPING_CONTAINER_DOOR;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.SHIPPING_CONTAINER_DOOR = this.registerObject("shipping_container_door", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.LOGISTICS.STORAGE.BLOCKS.SHIPPING_CONTAINER_DOOR.getValue().get(), getBaseProperties()));
 
         // Tab

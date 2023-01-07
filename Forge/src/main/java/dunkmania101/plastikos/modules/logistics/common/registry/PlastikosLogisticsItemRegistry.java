@@ -17,7 +17,7 @@ public class PlastikosLogisticsItemRegistry extends BasePlastikosItemRegistryHan
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> ARAMID_BELT;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.ARAMID_BELT = this.registerObject("aramid_belt", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.LOGISTICS.BLOCKS.ARAMID_BELT.getValue().get(), getBaseProperties()));
 
         // Tab

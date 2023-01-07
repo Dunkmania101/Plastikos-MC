@@ -141,6 +141,10 @@ repositories {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
+    maven{
+        // curseforge
+        url "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
@@ -151,9 +155,15 @@ dependencies {
 
     // Dev environment only
     // JEI
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    //runtimeOnly(fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}"))
+    // REI
+    //runtimeOnly(fg.deobf("curse.maven:roughly-enough-items-310111:${rei_fileid}"))
+    //runtimeOnly(fg.deobf("curse.maven:roughly-enough-resources-325625:${rer_fileid}"))
     // TOP
-    //runtimeOnly(fg.deobf("mcjty.theoneprobe:TheOneProbe-${minecraft_major_version}-${top_version}"))
+    //runtimeOnly(fg.deobf("curse.maven:theoneprobe-245211:${top_fileid}"))
+    //runtimeOnly(fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_minecraft_version}-${top_version}"))
+    // Jade
+    implementation fg.deobf("curse.maven:jade-324717:${jade_fileid}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

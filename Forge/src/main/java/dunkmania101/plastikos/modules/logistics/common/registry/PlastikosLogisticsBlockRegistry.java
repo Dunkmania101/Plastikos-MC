@@ -16,7 +16,7 @@ public class PlastikosLogisticsBlockRegistry extends BasePlastikosBlockRegistryH
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> ARAMID_BELT;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.ARAMID_BELT = this.registerObject("aramid_belt", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }
 }

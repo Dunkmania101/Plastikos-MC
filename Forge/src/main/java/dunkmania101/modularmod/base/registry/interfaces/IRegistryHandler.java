@@ -50,5 +50,12 @@ public interface IRegistryHandler<T, M extends IModularModModule<?>> extends IRe
         return NameUtils.appendName(getModuleId(), baseName);
     }
 
-    default void registerObjects() {};
+    default void registerObjects() {
+        preRegisterObjects();
+        mainRegisterObjects();
+        postRegisterObjects();
+    };
+    default void preRegisterObjects() {};
+    default void mainRegisterObjects() {};
+    default void postRegisterObjects() {};
 }

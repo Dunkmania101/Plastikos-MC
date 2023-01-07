@@ -9,6 +9,6 @@ public class PlastikosTransportationVehiclesLandItemRegistry extends BasePlastik
     }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
     }
 }

@@ -17,7 +17,7 @@ public class PlastikosControlTerminalsItemRegistry extends BasePlastikosItemRegi
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> TERMINAL_DOCK;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // BlockItems
         this.TERMINAL_DOCK = this.registerObject("terminal_dock", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.CONTROL.TERMINALS.BLOCKS.TERMINAL_DOCK.getValue().get(), getBaseProperties()));
 

@@ -21,7 +21,7 @@ public class PlastikosMobsItemRegistry extends BasePlastikosItemRegistryHandler 
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> ANIMAL_CAGE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // Tools
         this.FIELD_NET = this.registerObject("field_net", () -> new BasePlastikosItem(getParentModule(), getBaseProperties()));
 

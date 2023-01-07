@@ -16,7 +16,7 @@ public class PlastikosProductionHarvestingBlockRegistry extends BasePlastikosBlo
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> COMBINE_BLADE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.COMBINE_BLADE = this.registerObject("combine_blade", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }
 }

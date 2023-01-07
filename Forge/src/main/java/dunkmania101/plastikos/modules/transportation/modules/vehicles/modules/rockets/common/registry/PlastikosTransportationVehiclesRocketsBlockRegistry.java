@@ -9,6 +9,6 @@ public class PlastikosTransportationVehiclesRocketsBlockRegistry extends BasePla
     }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
     }
 }

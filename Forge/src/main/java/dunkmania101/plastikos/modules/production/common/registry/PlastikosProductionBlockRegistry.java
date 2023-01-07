@@ -16,7 +16,7 @@ public class PlastikosProductionBlockRegistry extends BasePlastikosBlockRegistry
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> METAL_REINFORCED_FURNACE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.METAL_REINFORCED_FURNACE = this.registerObject("metal_reinforced_furnace", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }
 }

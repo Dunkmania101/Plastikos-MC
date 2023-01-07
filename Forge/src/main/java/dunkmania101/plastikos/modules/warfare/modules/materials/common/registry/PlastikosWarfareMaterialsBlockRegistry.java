@@ -9,6 +9,6 @@ public class PlastikosWarfareMaterialsBlockRegistry extends BasePlastikosBlockRe
     }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
     }
 }

@@ -17,7 +17,7 @@ public class PlastikosMobsWildlifeItemRegistry extends BasePlastikosItemRegistry
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> LIVING_BLOOM;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // BlockItems
         this.LIVING_BLOOM = this.registerObject("grizzly_spawner", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.MOBS.WILDLIFE.BLOCKS.LIVING_BLOOM.getValue().get(), getBaseProperties()));
 

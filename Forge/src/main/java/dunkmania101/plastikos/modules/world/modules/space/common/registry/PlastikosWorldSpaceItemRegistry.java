@@ -9,6 +9,6 @@ public class PlastikosWorldSpaceItemRegistry extends BasePlastikosItemRegistryHa
     }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
     }
 }

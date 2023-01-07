@@ -17,7 +17,7 @@ public class PlastikosProductionHarvestingItemRegistry extends BasePlastikosItem
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> COMBINE_BLADE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.COMBINE_BLADE = this.registerObject("combine_blade", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.PRODUCTION.HARVESTING.BLOCKS.COMBINE_BLADE.getValue().get(), getBaseProperties()));
 
         // Tab

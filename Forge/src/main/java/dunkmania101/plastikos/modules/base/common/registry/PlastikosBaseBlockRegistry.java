@@ -38,7 +38,7 @@ public class PlastikosBaseBlockRegistry extends BasePlastikosBlockRegistryHandle
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> BRONZE_FRAME;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.CAST_IRON_NAIL = this.registerObject("cast_iron_nail", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
         this.STEEL_NAIL = this.registerObject("steel_nail", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
         this.BRASS_NAIL = this.registerObject("brass_nail", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));

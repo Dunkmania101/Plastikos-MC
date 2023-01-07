@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.annotation.Nullable;
+
 import com.ibm.icu.impl.Pair;
 
+import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
+import dunkmania101.modularmod.base.registry.interfaces.IRegistryHandler;
 import dunkmania101.modularmod.base.util.NameUtils;
 import net.minecraft.resources.ResourceLocation;
 
@@ -23,11 +27,25 @@ public interface IModularModModule<T extends IModularModModule<?>> {
         return id;
     }
 
+    @Nullable
+    default Map<String, IRegistryHandler<?, T>> getCommonRegistries() {
+        return null;
+    }
+    @Nullable
+    default Map<String, IRegistryHandler<?, T>> getClientRegistries() {
+        return null;
+    }
+    @Nullable
+    default Map<String, IRegistryHandler<?, T>> getServerRegistries() {
+        return null;
+    }
+
     default String getFriendlyName() {
         return this.getId();
     }
 
     T getRoot();
+    @Nullable
     default T getParent() {
         return null;
     }
@@ -225,9 +243,33 @@ public interface IModularModModule<T extends IModularModModule<?>> {
     default void clientConfigSetup() {};
     default void serverConfigSetup() {};
 
-    default void commonRegistrySetup() {};
-    default void clientRegistrySetup() {};
-    default void serverRegistrySetup() {};
+    @Nullable
+    default ArrayList<ModularModCreativeModeTab> getCreativeTabs() {return null;}
+    default void addCreativeTab(ModularModCreativeModeTab tab) {
+        ArrayList<ModularModCreativeModeTab> tabs = getCreativeTabs();
+        if (tabs != null) {
+            tabs.add(tab);
+        }
+    }
+
+    default void commonRegistrySetup() {
+        Map<String, IRegistryHandler<?, T>> registries = getCommonRegistries();
+        if (registries != null) {
+            registries.values().forEach(r -> r.registerObjects());
+        }
+    };
+    default void clientRegistrySetup() {
+        Map<String, IRegistryHandler<?, T>> registries = getClientRegistries();
+        if (registries != null) {
+            registries.values().forEach(r -> r.registerObjects());
+        }
+    };
+    default void serverRegistrySetup() {
+        Map<String, IRegistryHandler<?, T>> registries = getServerRegistries();
+        if (registries != null) {
+            registries.values().forEach(r -> r.registerObjects());
+        }
+    };
 
     default void commonGeneralSetup() {};
     default void clientGeneralSetup() {};

@@ -26,7 +26,7 @@ public class PlastikosTransportationVehiclesBlockRegistry extends BasePlastikosB
     // }}
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.SMALL_WHEEL_CORE = this.registerObject("small_wheel_core", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
         this.WHEEL_CORE = this.registerObject("wheel_core", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));
         this.LARGE_WHEEL_CORE = this.registerObject("large_wheel_core", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesWood()));

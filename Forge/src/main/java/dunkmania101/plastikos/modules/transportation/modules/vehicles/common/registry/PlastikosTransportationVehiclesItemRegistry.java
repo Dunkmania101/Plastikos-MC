@@ -26,7 +26,7 @@ public class PlastikosTransportationVehiclesItemRegistry extends BasePlastikosIt
     // }
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.SMALL_WHEEL_CORE = this.registerObject("small_wheel_core", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.SMALL_WHEEL_CORE.getValue().get(), getBaseProperties()));
         this.WHEEL_CORE = this.registerObject("wheel_core", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.WHEEL_CORE.getValue().get(), getBaseProperties()));
         this.LARGE_WHEEL_CORE = this.registerObject("large_wheel_core", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.TRANSPORTATION.VEHICLES.BLOCKS.LARGE_WHEEL_CORE.getValue().get(), getBaseProperties()));

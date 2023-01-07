@@ -16,7 +16,7 @@ public class PlastikosControlBlockRegistry extends BasePlastikosBlockRegistryHan
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> WIRELESS_ANTENNA;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.WIRELESS_ANTENNA = this.registerObject("wireless_antenna", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }
 }

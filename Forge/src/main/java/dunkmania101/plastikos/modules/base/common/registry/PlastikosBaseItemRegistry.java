@@ -42,7 +42,7 @@ public class PlastikosBaseItemRegistry extends BasePlastikosItemRegistryHandler 
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> BRONZE_FRAME;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // Tools
         this.CAST_IRON_CROWBAR = this.registerObject("cast_iron_crowbar", () -> new BasePlastikosItem(getParentModule(), getBaseProperties()));
 

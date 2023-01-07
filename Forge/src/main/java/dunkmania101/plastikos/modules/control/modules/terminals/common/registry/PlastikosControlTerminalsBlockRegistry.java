@@ -16,7 +16,7 @@ public class PlastikosControlTerminalsBlockRegistry extends BasePlastikosBlockRe
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> TERMINAL_DOCK;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.TERMINAL_DOCK = this.registerObject("terminal_dock", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }
 }

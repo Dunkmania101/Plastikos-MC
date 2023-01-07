@@ -17,7 +17,7 @@ public class PlastikosMobsBlockRegistry extends BasePlastikosBlockRegistryHandle
     public Entry<ResourceLocation, Supplier<BasePlastikosBlock>> ANIMAL_CAGE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.MOUSETRAP = this.registerObject("mousetrap", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
         this.ANIMAL_CAGE = this.registerObject("animal_cage", () -> new BasePlastikosBlock(getParentModule(), getBasePropertiesMetal()));
     }

@@ -17,7 +17,7 @@ public class PlastikosMobsMonstersItemRegistry extends BasePlastikosItemRegistry
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> GRIZZLY_SPAWNER;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         // BlockItems
         this.GRIZZLY_SPAWNER = this.registerObject("grizzly_spawner", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.MOBS.MONSTERS.BLOCKS.GRIZZLY_SPAWNER.getValue().get(), getBaseProperties()));
 

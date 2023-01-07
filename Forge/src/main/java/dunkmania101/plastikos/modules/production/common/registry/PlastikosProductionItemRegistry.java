@@ -17,7 +17,7 @@ public class PlastikosProductionItemRegistry extends BasePlastikosItemRegistryHa
     public Entry<ResourceLocation, Supplier<BasePlastikosBlockItem>> METAL_REINFORCED_FURNACE;
 
     @Override
-    public void registerObjects() {
+    public void mainRegisterObjects() {
         this.METAL_REINFORCED_FURNACE = this.registerObject("metal_reinforced_furnace", () -> new BasePlastikosBlockItem(getParentModule(), PlastikosMod.INSTANCE.PRODUCTION.BLOCKS.METAL_REINFORCED_FURNACE.getValue().get(), getBaseProperties()));
 
         // Tab
