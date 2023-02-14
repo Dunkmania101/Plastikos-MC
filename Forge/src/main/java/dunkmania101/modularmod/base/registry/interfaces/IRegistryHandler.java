@@ -22,12 +22,11 @@ public interface IRegistryHandler<T, M extends IModularModModule<?>> extends IRe
 
     default <U extends T> Entry<ResourceLocation, Supplier<U>> registerObject(ResourceLocation rn, Supplier<U> value) {
         if (rn != null && value != null) {
-            getEntries().put(rn, value);
             IRegistryAcceptor<U> acceptor = (IRegistryAcceptor<U>) this.getAcceptor();
             if (acceptor != null && acceptor != this) {
-                return acceptor.acceptObject(rn, value);
-            } else {
-                return Map.entry(rn, value);
+                Entry<ResourceLocation, Supplier<U>> entry = acceptor.acceptObject(rn, value);
+                getEntries().put(rn, entry.getValue());
+                return entry;
             }
         }
         return null;

@@ -17,7 +17,7 @@ import dunkmania101.plastikos.modules.production.PlastikosModuleProduction;
 import dunkmania101.plastikos.modules.transportation.PlastikosModuleTransportation;
 import dunkmania101.plastikos.modules.warfare.PlastikosModuleWarfare;
 import dunkmania101.plastikos.modules.world.PlastikosModuleWorld;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -79,15 +79,15 @@ public class PlastikosMod implements IPlastikosModule {
     @SuppressWarnings("unchecked")
     @Override
     public IRegistryAcceptor<?> getRegistryAcceptorOfId(ResourceLocation registry) {
-        if (registry == Registry.ITEM_REGISTRY.location()) {
+        if (registry == Registries.ITEM.location()) {
             return this.itemAcceptor;
-        } else if (registry == Registry.BLOCK_REGISTRY.location()) {
+        } else if (registry == Registries.BLOCK.location()) {
             return this.blockAcceptor;
-        } else if (registry == Registry.BLOCK_ENTITY_TYPE_REGISTRY.location()) {
+        } else if (registry == Registries.BLOCK_ENTITY_TYPE.location()) {
             return this.blockEntityAcceptor;
-        } else if (registry == Registry.ENTITY_TYPE_REGISTRY.location()) {
+        } else if (registry == Registries.ENTITY_TYPE.location()) {
             return this.entityAcceptor;
-        } else if (registry == Registry.MENU_REGISTRY.location()) {
+        } else if (registry == Registries.MENU.location()) {
             return this.menuAcceptor;
         }
 

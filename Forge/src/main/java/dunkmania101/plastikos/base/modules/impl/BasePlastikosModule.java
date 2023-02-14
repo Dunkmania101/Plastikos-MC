@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.ibm.icu.impl.Pair;
 
+import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.plastikos.PlastikosMod;
 import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 
@@ -13,10 +14,12 @@ public abstract class BasePlastikosModule implements IPlastikosModule {
     protected final IPlastikosModule PARENT;
 
     public final Map<String, IPlastikosModule> MODULES;
+    public final ArrayList<ModularModCreativeModeTab> CREATIVE_TABS;
 
     public BasePlastikosModule(IPlastikosModule parent) {
         this.PARENT = parent;
         this.MODULES = new HashMap<>();
+        this.CREATIVE_TABS = new ArrayList<>();
     }
 
     @Override
@@ -27,6 +30,11 @@ public abstract class BasePlastikosModule implements IPlastikosModule {
     @Override
     public Map<String, IPlastikosModule> getChildren() {
         return this.MODULES;
+    }
+
+    @Override
+    public ArrayList<ModularModCreativeModeTab> getCreativeTabs() {
+        return this.CREATIVE_TABS;
     }
 
     @Override

@@ -8,7 +8,7 @@ import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import dunkmania101.modularmod.base.registry.interfaces.IItemRegistryHandler;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
@@ -18,14 +18,36 @@ public abstract class BaseItemRegistryHandler<M extends IModularModModule<?>> im
     private ResourceLocation TAB_ICON_ID;
     private ModularModCreativeModeTab CREATIVE_MODE_TAB;
     private final IRegistryAcceptor<? extends Item> acceptor;
+    private final String ID;
+    private final String FRIENDLY_NAME;
 
-    public BaseItemRegistryHandler(M parent, IRegistryAcceptor<? extends Item> acceptor) {
+    public BaseItemRegistryHandler(M parent, IRegistryAcceptor<? extends Item> acceptor, String id, String friendlyName) {
         this.PARENT = parent;
         this.acceptor = acceptor;
+        this.ID = id;
+        this.FRIENDLY_NAME = friendlyName;
+    }
+
+    public BaseItemRegistryHandler(M parent, String id, String friendlyName) {
+        this(parent, parent.getRegistryAcceptorOfId(Registries.ITEM.location()), id, friendlyName);
+    }
+
+    public BaseItemRegistryHandler(M parent, String id) {
+        this(parent, id, null);
     }
 
     public BaseItemRegistryHandler(M parent) {
-        this(parent, parent.getRegistryAcceptorOfId(Registry.ITEM_REGISTRY.location()));
+        this(parent, null);
+    }
+
+    @Override
+    public String getId() {
+        return this.ID == null ? IItemRegistryHandler.super.getId() : this.ID;
+    }
+
+    @Override
+    public String getFriendlyName() {
+        return this.FRIENDLY_NAME == null ? IItemRegistryHandler.super.getFriendlyName() : this.FRIENDLY_NAME;
     }
 
     @Override

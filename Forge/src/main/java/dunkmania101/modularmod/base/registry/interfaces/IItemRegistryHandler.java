@@ -8,8 +8,8 @@ import net.minecraft.world.item.Item;
 public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IRegistryHandler<Item, M> {
     ModularModCreativeModeTab getCreativeModeTab();
     void setCreativeModeTab(ModularModCreativeModeTab tab);
-    default void createCreativeModeTab() {
-        this.setCreativeModeTab(new ModularModCreativeModeTab(getParentModule().getFriendlyName()) {
+    default void createCreativeModeTab(String label, String id) {
+        setCreativeModeTab(new ModularModCreativeModeTab(label, () -> getEntries().values(), id) {
             @Override
             public ResourceLocation getIconId() {
                 return getTabIconId();
@@ -17,9 +17,20 @@ public interface IItemRegistryHandler<M extends IModularModModule<?>> extends IR
         });
         getParentModule().addCreativeTab(getCreativeModeTab());
     }
+    default void createCreativeModeTab() {
+        createCreativeModeTab(getFriendlyName(), getId());
+    }
+
+    default String getId() {
+        return getParentModule().getId();
+    }
+
+    default String getFriendlyName() {
+        return getParentModule().getFriendlyName();
+    }
 
     default Item.Properties getBaseProperties() {
-        return new Item.Properties().tab(getCreativeModeTab());
+        return new Item.Properties();
     }
 
     default Item getDefaultItem() {

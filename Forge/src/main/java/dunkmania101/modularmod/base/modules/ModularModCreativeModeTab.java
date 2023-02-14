@@ -1,16 +1,39 @@
 package dunkmania101.modularmod.base.modules;
 
+import java.util.Collection;
+import java.util.function.Supplier;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class ModularModCreativeModeTab extends CreativeModeTab {
-    public ModularModCreativeModeTab(String label) {
-        super(label);
+    private final String ID;
+
+    public ModularModCreativeModeTab(Builder builder, String id) {
+        super(builder);
+        this.ID = id;
+    }
+
+    public ModularModCreativeModeTab(String label, Supplier<Collection<Supplier<? extends Item>>> items, String id) {
+        this(builder(Row.TOP, 0).title(Component.translatable(label)).displayItems((FeatureFlagSet enabledFeatures, CreativeModeTab.Output output, boolean displayOperatorCreativeTab) -> {
+            items.get().forEach((i) -> output.accept(i.get()));
+        }), id);
+    }
+
+    public ModularModCreativeModeTab(String label, Supplier<Collection<Supplier<? extends Item>>> items) {
+        this(label, items, label);
+    }
+
+    public String getId() {
+        return this.ID;
     }
 
     @Nullable
@@ -20,12 +43,12 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
 
     @Nonnull
     public ResourceLocation getBlankIconId() {
-       return Registry.ITEM.getDefaultKey();
+       return new ResourceLocation("minecraft:air");
     }
 
     public ItemStack makeIcon() {
         ResourceLocation iconId = this.getIconId();
-        return new ItemStack(Registry.ITEM.get(iconId == null ? this.getBlankIconId() : iconId));
+        return new ItemStack(BuiltInRegistries.ITEM.get(iconId == null ? this.getBlankIconId() : iconId));
     }
 
     @Override

@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import com.ibm.icu.impl.Pair;
 
 import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
+import dunkmania101.modularmod.base.registry.interfaces.IItemRegistryHandler;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryHandler;
 import dunkmania101.modularmod.base.util.NameUtils;
@@ -246,16 +247,25 @@ public interface IModularModModule<T extends IModularModModule<?>> {
     @Nullable
     default ArrayList<ModularModCreativeModeTab> getCreativeTabs() {return null;}
     default void addCreativeTab(ModularModCreativeModeTab tab) {
-        ArrayList<ModularModCreativeModeTab> tabs = getCreativeTabs();
-        if (tabs != null) {
-            tabs.add(tab);
+        if (tab != null) {
+            ArrayList<ModularModCreativeModeTab> tabs = getCreativeTabs();
+            if (tabs != null) {
+                if (!tabs.contains(tab)) {
+                    tabs.add(tab);
+                }
+            }
         }
     }
 
     default void commonRegistrySetup() {
         Map<String, IRegistryHandler<?, T>> registries = getCommonRegistries();
         if (registries != null) {
-            registries.values().forEach(r -> r.registerObjects());
+            registries.values().forEach(r -> {
+                r.registerObjects();
+                if (r instanceof IItemRegistryHandler<?> ir) {
+                    addCreativeTab(ir.getCreativeModeTab());
+                }
+            });
         }
     };
     default void clientRegistrySetup() {
