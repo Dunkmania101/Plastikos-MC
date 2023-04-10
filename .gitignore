@@ -66,3 +66,5 @@ run/
 #----------
 #Other
 jdt.ls-java-project
+.dir-locals.el
+
