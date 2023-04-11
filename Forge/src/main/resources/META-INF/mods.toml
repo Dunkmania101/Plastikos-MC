@@ -24,7 +24,7 @@ displayName="Plastikos" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="https://github.com/Dunkmania101/Plastikos-MC/tree/1.19.2-Forge" #optional
+displayURL="https://github.com/Dunkmania101/Plastikos-MC/tree/1.19.3-Forge" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="plastikos-logo.png" #optional
 # A text field displayed in the mod UI
