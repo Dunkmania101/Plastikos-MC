@@ -3,7 +3,7 @@ package dunkmania101.modularmod.base.data;
 public class ModularModConstants {
     public static final String MODID = "modularmod";
 
-    public static final String BLANKID = "noID";
+    public static final String BLANKID = "blankID";
 
     public static final String PATH_DELIMITER = "/";
 
