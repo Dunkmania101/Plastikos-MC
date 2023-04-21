@@ -36,3 +36,4 @@ public class PlastikosModuleWorld extends BasePlastikosModule {
         this.ITEMS.registerObjects();
     }
 }
+

@@ -33,3 +33,4 @@ public class PlastikosModuleWarfare extends BasePlastikosModule {
         this.ITEMS.registerObjects();
     }
 }
+

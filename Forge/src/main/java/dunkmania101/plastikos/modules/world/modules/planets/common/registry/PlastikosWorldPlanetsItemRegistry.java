@@ -12,3 +12,4 @@ public class PlastikosWorldPlanetsItemRegistry extends BasePlastikosItemRegistry
     public void mainRegisterObjects() {
     }
 }
+

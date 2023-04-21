@@ -9,7 +9,6 @@ import javax.annotation.Nullable;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +22,7 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
     }
 
     public ModularModCreativeModeTab(String label, Supplier<Collection<Supplier<? extends Item>>> items, String id) {
-        this(builder(Row.TOP, 0).title(Component.translatable(label)).displayItems((FeatureFlagSet enabledFeatures, CreativeModeTab.Output output, boolean displayOperatorCreativeTab) -> {
+        this(builder(Row.TOP, 0).title(Component.translatable(label)).displayItems((CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) -> {
             items.get().forEach((i) -> output.accept(i.get()));
         }), id);
     }

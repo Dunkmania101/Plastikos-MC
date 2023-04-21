@@ -12,3 +12,4 @@ public class PlastikosWorldItemRegistry extends BasePlastikosItemRegistryHandler
     public void mainRegisterObjects() {
     }
 }
+

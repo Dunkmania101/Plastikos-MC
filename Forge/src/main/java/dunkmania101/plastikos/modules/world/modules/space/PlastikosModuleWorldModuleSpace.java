@@ -28,3 +28,4 @@ public class PlastikosModuleWorldModuleSpace extends BasePlastikosModule {
         this.ITEMS.registerObjects();
     }
 }
+
