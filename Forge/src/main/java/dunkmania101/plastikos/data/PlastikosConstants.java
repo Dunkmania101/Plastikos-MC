@@ -26,6 +26,7 @@ public class PlastikosConstants {
     public static final String MODULEID_TERMINALS = "terminals";
     public static final String MODULEID_PRODUCTION = "production";
     public static final String MODULEID_HARVESTING = "harvesting";
+    public static final String MODULEID_EXCAVATING = "excavating";
     public static final String MODULEID_PROCESSING = "processing";
     public static final String MODULEID_MANUFACTURING = "manufacturing";
     public static final String MODULEID_FORGING = "forging";
