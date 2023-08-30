@@ -2,28 +2,60 @@ package dunkmania101.modularmod.base.registry.interfaces;
 
 import dunkmania101.modularmod.base.modules.interfaces.IModularModModule;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.material.Material;
 
 public interface IBlockRegistryHandler<M extends IModularModModule<?>> extends IRegistryHandler<Block, M> {
+    default Properties getBaseProperties(boolean requireTool) {
+        return requireTool ? Properties.of().requiresCorrectToolForDrops() : Properties.of();
+    }
+    default Properties getBaseProperties() {
+        return getBaseProperties(false);
+    }
+
+
+    default Properties getBasePropertiesCloth(boolean requireTool) {
+        return getBaseProperties(requireTool).sound(SoundType.WOOL);
+    }
     default Properties getBasePropertiesCloth() {
-        return Properties.of(Material.CLOTH_DECORATION);
+        return getBasePropertiesCloth(false);
     }
 
+    default Properties getBasePropertiesWool(boolean requireTool) {
+        return getBaseProperties(requireTool).sound(SoundType.WOOL);
+    }
     default Properties getBasePropertiesWool() {
-        return Properties.of(Material.WOOL);
+        return getBasePropertiesWool(false);
     }
 
+    default Properties getBasePropertiesWood(boolean requireTool) {
+        return getBaseProperties(requireTool).sound(SoundType.WOOD);
+    }
     default Properties getBasePropertiesWood() {
-        return Properties.of(Material.WOOD);
+        return getBasePropertiesWood(false);
     }
 
+    default Properties getBasePropertiesStone(boolean requireTool) {
+        return getBaseProperties(requireTool).sound(SoundType.STONE);
+    }
     default Properties getBasePropertiesStone() {
-        return Properties.of(Material.STONE);
+        return getBasePropertiesStone(true);
     }
 
+    default Properties getBasePropertiesMetal(boolean requireTool) {
+        return getBaseProperties(requireTool).sound(SoundType.METAL);
+    }
     default Properties getBasePropertiesMetal() {
-        return Properties.of(Material.METAL);
+        return getBasePropertiesMetal(true);
+    }
+
+
+    default Block getDefaultBlockCloth() {
+        return new Block(getBasePropertiesCloth());
+    }
+
+    default Block getDefaultBlockWool() {
+        return new Block(getBasePropertiesWool());
     }
 
     default Block getDefaultBlockWood() {

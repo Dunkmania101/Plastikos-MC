@@ -12,6 +12,8 @@ import dunkmania101.modularmod.base.util.NameUtils;
 import dunkmania101.plastikos.PlastikosMod;
 import dunkmania101.plastikos.base.modules.interfaces.IPlastikosModule;
 import dunkmania101.plastikos.data.PlastikosConstants;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.inventory.MenuType;
@@ -21,7 +23,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -66,7 +67,7 @@ public class PlastikosModForge {
         modEventBus.addListener(this::onCommonSetup);
         modEventBus.addListener(this::onClientSetup);
         modEventBus.addListener(this::onServerSetup);
-        modEventBus.addListener(this::onCreativeModeTabsRegistry);
+        //modEventBus.addListener(this::onCreativeModeTabsRegistry);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -87,13 +88,14 @@ public class PlastikosModForge {
         };
     }
 
-    private void handleModuleCreativeModeTabsRegistry(final CreativeModeTabEvent.Register event, IPlastikosModule module) {
+    private void handleModuleCreativeModeTabsRegistry(/*final CreativeModeTabEvent.Register event,*/ IPlastikosModule module) {
         if (module != null) {
             ArrayList<ModularModCreativeModeTab> tabs = module.getCreativeTabs();
             if (tabs != null) {
                 for (ModularModCreativeModeTab tab : tabs) {
                     if (tab != null) {
-                        event.registerCreativeModeTab(new ResourceLocation(PlastikosConstants.MODID, NameUtils.appendName(module.getId(), tab.getId())), (builder) -> builder.withTabFactory((b) -> tab));
+                        //event.registerCreativeModeTab(new ResourceLocation(PlastikosConstants.MODID, NameUtils.appendName(module.getId(), tab.getId())), (builder) -> builder.withTabFactory((b) -> tab));
+                        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(PlastikosConstants.MODID, NameUtils.appendName(module.getId(), tab.getId())), tab);
                     }
                 }
             }
@@ -101,16 +103,16 @@ public class PlastikosModForge {
             if (children != null) {
                 for (IPlastikosModule child : children.values()) {
                     if (child != null) {
-                        handleModuleCreativeModeTabsRegistry(event, child);
+                        handleModuleCreativeModeTabsRegistry(/*event,*/ child);
                     }
                 }
             }
         }
     }
 
-    private void onCreativeModeTabsRegistry(final CreativeModeTabEvent.Register event) {
-        handleModuleCreativeModeTabsRegistry(event, MOD);
-    }
+    //private void onCreativeModeTabsRegistry(final CreativeModeTabEvent.Register event) {
+    //    handleModuleCreativeModeTabsRegistry(event, MOD);
+    //}
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {
         MOD.commonSetup();
@@ -118,6 +120,7 @@ public class PlastikosModForge {
 
     private void onClientSetup(final FMLClientSetupEvent event) {
         MOD.clientSetup();
+        handleModuleCreativeModeTabsRegistry(MOD);
     }
 
     private void onServerSetup(final FMLDedicatedServerSetupEvent event) {

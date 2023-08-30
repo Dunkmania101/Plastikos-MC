@@ -3,11 +3,17 @@ package dunkmania101.modularmod.base.client.ui.base.interfaces;
 import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 
 public interface IHasVisualContent<T extends IHasVisualContent<?>> {
     default Minecraft getMinecraft() {
         Minecraft mc = Minecraft.getInstance(); // Trying to avoid a potential memory leak
         return mc;
+    }
+
+    default GuiGraphics getGuiGraphics() {
+        GuiGraphics guigraphics = new GuiGraphics(getMinecraft(), getMinecraft().renderBuffers().bufferSource()); // Trying to avoid a potential memory leak
+        return guigraphics;
     }
 
     void setParent(IHasVisualContent<?> newParent);
