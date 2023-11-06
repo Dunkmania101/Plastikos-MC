@@ -22,7 +22,7 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
     }
 
     public ModularModCreativeModeTab(String label, Supplier<Collection<Supplier<? extends Item>>> items, String id) {
-        this(builder(Row.TOP, 0).title(Component.translatable(label)).displayItems((CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) -> {
+        this(builder().title(Component.translatable(label)).displayItems((CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) -> {
             items.get().forEach((i) -> output.accept(i.get()));
         }), id);
     }
@@ -47,7 +47,7 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
 
     public ItemStack makeIcon() {
         ResourceLocation iconId = this.getIconId();
-        return new ItemStack(BuiltInRegistries.ITEM.get(iconId == null ? this.getBlankIconId() : iconId));
+        return new ItemStack(BuiltInRegistries.ITEM.get(iconId == null || iconId.getNamespace() == null || iconId.getPath() == null ? this.getBlankIconId() : iconId));
     }
 
     @Override
