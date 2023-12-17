@@ -6,13 +6,14 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.ibm.icu.impl.Pair;
+import com.mojang.datafixers.util.Pair;
 
 import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.modularmod.base.registry.interfaces.IItemRegistryHandler;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryAcceptor;
 import dunkmania101.modularmod.base.registry.interfaces.IRegistryHandler;
 import dunkmania101.modularmod.base.util.NameUtils;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public interface IModularModModule<T extends IModularModModule<?>> {
@@ -42,7 +43,7 @@ public interface IModularModModule<T extends IModularModModule<?>> {
     }
 
     default String getFriendlyName() {
-        return this.getId();
+        return Component.translatable(this.getId()).getString();
     }
 
     T getRoot();
@@ -55,7 +56,7 @@ public interface IModularModModule<T extends IModularModModule<?>> {
     }
 
     /*
-     * @Return Pair<String, Boolean> where String is dependency id and Boolean is whether dependency is mandatory
+     * @Return ArrayList<Pair<String, Boolean>> where String is dependency id and Boolean is whether dependency is mandatory
      */
     default ArrayList<Pair<String, Boolean>> getDependencyIds() {
         ArrayList<Pair<String, Boolean>> deps = new ArrayList<>();
@@ -118,7 +119,7 @@ public interface IModularModModule<T extends IModularModModule<?>> {
         return areDepsDependable(false);
     }
 
-    // Separate from registerChild in case getChildren does not return the storage directly and thus this adding logic must be radically different
+    // Separate from registerChild in case getChildren does not return the array object directly and thus this adding logic must be radically different
     default <M extends T> M addChild(M child) {
         if (child != null) {
             Map<String, T> children = this.getChildren();

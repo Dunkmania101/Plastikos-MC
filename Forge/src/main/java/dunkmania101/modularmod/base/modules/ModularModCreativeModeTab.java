@@ -42,12 +42,12 @@ public class ModularModCreativeModeTab extends CreativeModeTab {
 
     @Nonnull
     public ResourceLocation getBlankIconId() {
-       return new ResourceLocation("minecraft:air");
+        return BuiltInRegistries.ITEM.getDefaultKey();
     }
 
     public ItemStack makeIcon() {
         ResourceLocation iconId = this.getIconId();
-        return new ItemStack(BuiltInRegistries.ITEM.get(iconId == null || iconId.getNamespace() == null || iconId.getPath() == null ? this.getBlankIconId() : iconId));
+        return new ItemStack(BuiltInRegistries.ITEM.get(iconId == null ? this.getBlankIconId() : iconId));
     }
 
     @Override

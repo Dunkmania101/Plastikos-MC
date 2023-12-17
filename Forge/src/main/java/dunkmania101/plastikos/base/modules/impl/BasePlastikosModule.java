@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ibm.icu.impl.Pair;
+import com.mojang.datafixers.util.Pair;
 
 import dunkmania101.modularmod.base.modules.ModularModCreativeModeTab;
 import dunkmania101.plastikos.PlastikosMod;
